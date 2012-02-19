@@ -1,7 +1,6 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,19 +31,13 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		});*/
     }
 
-	public void onClick(View v) {
-    	switch(v.getId()) {
-    	case R.id.new_game_button:
-    		toast("Under utvikling!");
-    		break;
-    	case R.id.about_button:
-    		Intent i = new Intent(this, Om.class);
-    		startActivity(i);
-    		break;
-    	}	
-    }
-	
+
 	protected void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+	}
+
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
