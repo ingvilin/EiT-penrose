@@ -1,6 +1,7 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,6 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		});*/
     }
 
-<<<<<<< HEAD
 	public void onClick(View v) {
     	switch(v.getId()) {
     	case R.id.new_game_button:
@@ -55,15 +55,8 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		
 	}
-=======
->>>>>>> 45677b554c7a28582dd21835b1a424d69ec69533
 
 	protected void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
-	}
-
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 }
