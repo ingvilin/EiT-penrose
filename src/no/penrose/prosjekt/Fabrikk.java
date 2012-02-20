@@ -37,6 +37,8 @@ public class Fabrikk extends Activity implements OnClickListener {
         button_steinbrudd.setOnClickListener(this);
         button_avslutt = (Button) findViewById(R.id.avslutt);
         button_avslutt.setOnClickListener(this);
+        
+        Spill mSpill = new Spill();
     }
 
 	public void onClick(View v) {
