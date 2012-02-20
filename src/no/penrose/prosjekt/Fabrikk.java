@@ -1,44 +1,54 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class Factory extends Activity implements OnClickListener {
+public class Fabrikk extends Activity implements OnClickListener {
 	private LinearLayout root;
 	private ImageView image1;
 	private ImageView image2;
 	private ImageView image3;
+	private Button button_steinbrudd;
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.factory);
-        root = (LinearLayout) findViewById(R.id.factory_root);
+        setContentView(R.layout.fabrikk);
+        root = (LinearLayout) findViewById(R.id.fabrikk_root);
         root.setOnClickListener(this);
-        image1 = (ImageView) findViewById(R.id.factory_image1);
+        image1 = (ImageView) findViewById(R.id.fabrikk_image1);
         image1.setOnClickListener(this);
-        image2 = (ImageView) findViewById(R.id.factory_image2);
+        image2 = (ImageView) findViewById(R.id.fabrikk_image2);
         image2.setOnClickListener(this);
-        image3 = (ImageView) findViewById(R.id.factory_image3);
+        image3 = (ImageView) findViewById(R.id.fabrikk_image3);
         image3.setOnClickListener(this);
+        button_steinbrudd = (Button) findViewById(R.id.til_steinbruddet);
+        button_steinbrudd.setOnClickListener(this);
     }
 
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.factory_image1:
-			toast("Min fabrikk??");
+		case R.id.fabrikk_image1:
+			toast("Min fabrikk.");
 			break;
-		case R.id.factory_image2:
+		case R.id.fabrikk_image2:
 			toast("Oppgrader produksjonen??");
 			break;
-		case R.id.factory_image3:
+		case R.id.fabrikk_image3:
 			toast("Invistere i forskning??");
+			break;
+		case R.id.til_steinbruddet:
+			Intent i = new Intent(this, Steinbrudd.class);
+			//send data med putExtra
+			startActivity(i);
 			break;
 		}
 	}

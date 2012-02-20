@@ -24,8 +24,12 @@
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity 
-            android:name=".Factory"
-            android:label="@string/app_name">
+            android:name=".Fabrikk"
+            android:label="@string/fabrikk_label">
+        </activity>
+        <activity 
+            android:name=".Steinbrudd"
+            android:label="@string/steinbrudd_label">
         </activity>
     </application>
 

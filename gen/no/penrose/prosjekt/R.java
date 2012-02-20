@@ -15,19 +15,26 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
         public static final int oppgrader=0x7f020002;
         public static final int silisiumfabrikken=0x7f020003;
+        public static final int steinbrudd=0x7f020004;
     }
     public static final class id {
-        public static final int about_button=0x7f050005;
-        public static final int factory_image1=0x7f050001;
-        public static final int factory_image2=0x7f050002;
-        public static final int factory_image3=0x7f050003;
-        public static final int factory_root=0x7f050000;
-        public static final int new_game_button=0x7f050004;
+        public static final int about_button=0x7f050006;
+        public static final int fabrikk_image1=0x7f050001;
+        public static final int fabrikk_image2=0x7f050002;
+        public static final int fabrikk_image3=0x7f050003;
+        public static final int fabrikk_root=0x7f050000;
+        public static final int kjope_stein=0x7f050009;
+        public static final int new_game_button=0x7f050005;
+        public static final int steinbrudd_image1=0x7f050008;
+        public static final int steinbrudd_root=0x7f050007;
+        public static final int til_fabrikken=0x7f05000a;
+        public static final int til_steinbruddet=0x7f050004;
     }
     public static final class layout {
         public static final int about=0x7f030000;
-        public static final int factory=0x7f030001;
+        public static final int fabrikk=0x7f030001;
         public static final int main=0x7f030002;
+        public static final int steinbrudd=0x7f030003;
     }
     public static final class string {
         public static final int about_button=0x7f040003;
@@ -35,7 +42,12 @@ public final class R {
         public static final int about_text=0x7f040006;
         public static final int about_title=0x7f040004;
         public static final int app_name=0x7f040000;
+        public static final int fabrikk_label=0x7f040007;
+        public static final int kjope_stein=0x7f04000b;
         public static final int main_label=0x7f040001;
         public static final int new_game_label=0x7f040002;
+        public static final int steinbrudd_label=0x7f040009;
+        public static final int til_fabrikken=0x7f04000a;
+        public static final int til_steinbrudd=0x7f040008;
     }
 }
