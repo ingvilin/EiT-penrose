@@ -1,5 +1,7 @@
 package no.penrose.prosjekt;
 
+import no.penrose.prosjekt.Produksjon;
+
 public class Spill {
 	private int money;
 	private int days;
@@ -48,9 +50,20 @@ public class Spill {
 		alloy_level = 0;
 		solar_level = 0;
 		mProduction = new Produksjon[3];
+		mProduction[0] = new Produksjon("Elektrisk", 1);
+		mProduction[1] = new Produksjon("Legering", 2);
+		mProduction[2] = new Produksjon("Solcelle", 3);
 		
 		initSalePrices();
 		initProducitonTime();
+	}
+	
+	public int getRocks() {
+		return rocks;
+	}
+	
+	public int getElectricTimer(){
+		return mProduction[0].getTimer();
 	}
 	
 	/** Skal kalles hver gang man trykker en knapp og den inkrementerer dager avhengig av handlingen,
@@ -76,9 +89,10 @@ public class Spill {
 	 * @param type: type of product; 1. electionic, 2. alloy, 3. solar
 	 * @return: true if transaction went trough else false
 	 */
-	private boolean startProduction(int amount, int type) {
+	public boolean startProduction(int amount, int type) {
 		updateProductionTime();
 		if(rocks - amount >= 0){
+			rocks = rocks - amount;
 			if(type == 1) {
 				mProduction[0].startProduction(rocks, production_time_electionics, amount);
 				return true;
@@ -88,7 +102,7 @@ public class Spill {
 				return true;
 			}
 			else if(type == 3) {
-				mProduction[3].startProduction(rocks, producion_time_solar, amount);
+				mProduction[2].startProduction(rocks, producion_time_solar, amount);
 				return true;
 			}
 		}

@@ -13,6 +13,14 @@ public class Produksjon {
 		amount = 0;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public int getTimer() {
+		return timer;
+	}
+	
 	public boolean startProduction(int availableAmount, int productionTime, int size) {
 		if(availableAmount - size >= 0) {
 			timer = productionTime;
