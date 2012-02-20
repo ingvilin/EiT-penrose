@@ -1,6 +1,8 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private ImageView image2;
 	private ImageView image3;
 	private Button button_steinbrudd;
+	private Button button_avslutt;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -32,6 +35,8 @@ public class Fabrikk extends Activity implements OnClickListener {
         image3.setOnClickListener(this);
         button_steinbrudd = (Button) findViewById(R.id.til_steinbruddet);
         button_steinbrudd.setOnClickListener(this);
+        button_avslutt = (Button) findViewById(R.id.avslutt);
+        button_avslutt.setOnClickListener(this);
     }
 
 	public void onClick(View v) {
@@ -49,6 +54,21 @@ public class Fabrikk extends Activity implements OnClickListener {
 			Intent i = new Intent(this, Steinbrudd.class);
 			//send data med putExtra
 			startActivity(i);
+			break;
+		case R.id.avslutt:
+			AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+			alertbox.setMessage("Er du sikker på at du ønsker å avslutte og selge alt?");
+			alertbox.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+			alertbox.setNegativeButton("Nei", new DialogInterface.OnClickListener() {	
+				public void onClick(DialogInterface dialog, int which) {
+					//Ikke gjøre noe som helst
+				}
+			});
+			alertbox.show();
 			break;
 		}
 	}

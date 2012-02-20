@@ -1,6 +1,8 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,8 +40,17 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	public void onClick(View v) {
     	switch(v.getId()) {
     	case R.id.new_game_button:
-    		toast("Under utvikling!");
-    		startGame();
+    		//toast("Under utvikling!");
+    		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+    		alertbox.setMessage("Du starter som eier av en silisiumfabrikk i trøndelag med 1 000 000 kr. Ditt mål er å øke" +
+    				" profitten ved å invistere i forskning, oppgradere utstyr, rekrutere briliante NTNU-studenter og utvide" +
+    				" produktsegmentet.");
+    		alertbox.setNeutralButton("Start", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					startGame();
+				}
+			});
+    		alertbox.show();
     		break;
     	case R.id.about_button:
     		Intent i = new Intent(this, Om.class);

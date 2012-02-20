@@ -14,6 +14,7 @@
     
     <string name="fabrikk_label">Fabrikken</string>
     <string name="til_steinbrudd">Til steinbruddet</string>
+    <string name="avslutt">Avslutte</string>
     
     <string name="steinbrudd_label">Steinbruddet</string>
     <string name="til_fabrikken">Tilbake til fabrikken</string>
