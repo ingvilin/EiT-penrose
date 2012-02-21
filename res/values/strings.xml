@@ -11,5 +11,17 @@
         Spillet er utviklet som en del av faget TFY4852 Å gripe det ubegripelige ved NTNU og har som misjon 
         å fremme interessen for realfag og silisium i trondheimsområdet.
     </string>
+    
+    <string name="fabrikk_label">Fabrikken</string>
+    <string name="til_steinbrudd">Til steinbruddet</string>
+    <string name="avslutt">Avslutte</string>
+    <string name="produksjon_title">Produser silisium for</string>
+    <string name="start_produksjon_elektro">Elektonikk</string>
+    <string name="start_produksjon_legering">Legering</string>
+    <string name="start_produksjon_solcelle">Solcelle</string>
+    
+    <string name="steinbrudd_label">Steinbruddet</string>
+    <string name="til_fabrikken">Tilbake til fabrikken</string>
+    <string name="kjope_stein">Kjøpe silisium</string>
 
 </resources>
