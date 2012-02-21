@@ -1,6 +1,7 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 public class Silisiumspillet extends Activity implements OnClickListener {
 	private static Button newGameButton;
 	private static Button aboutButton;
+	private Intent newGameIntent, aboutIntent; 
 	
 	/** Called when the activity is first created. */
     @Override
@@ -29,15 +31,24 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 				}
 			}
 		});*/
+        
+        newGameIntent = new Intent(getApplicationContext(), Kvarts.class);
+        aboutIntent = new Intent(getApplicationContext(), About.class);
     }
 
+    public void onClick(View view){
+    	switch(view.getId()){
+    	case R.id.new_game_button:
+    		startActivity(newGameIntent);
+    		break;
+    	case R.id.about_button:
+    		startActivity(aboutIntent);
+    		break;
+    	}
+    }
 
 	protected void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
 	}
 
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

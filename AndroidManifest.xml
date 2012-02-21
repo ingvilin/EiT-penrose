@@ -14,7 +14,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,6 +21,9 @@
             android:name=".Om"
             android:label="@string/about_title"
             android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity android:name=".Kvarts"
+            android:label="@string/app_name">
         </activity>
     </application>
 
