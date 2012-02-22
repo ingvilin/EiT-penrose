@@ -1,0 +1,10 @@
+package com.eit.silicon;
+
+public class Kvarts {
+
+	private static int antallKvarts;
+	
+	public Kvarts() {
+		
+	}
+}
