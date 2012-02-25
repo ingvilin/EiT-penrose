@@ -76,7 +76,7 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	
 	private void startGame() {
 		Log.d(TAG, "clicked on ");
-		Intent i = new Intent(Silisiumspillet.this, Fabrikk.class);
+		Intent i = new Intent(Silisiumspillet.this, Hovedsiden.class);
 		startActivity(i);
 		// TODO Auto-generated method stub
 		

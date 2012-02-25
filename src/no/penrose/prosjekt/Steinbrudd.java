@@ -24,8 +24,6 @@ public class Steinbrudd extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				kvartsAmount = kvartLimitAmount;
-				//		        kvartsAmountView.setText("Kvarts: " + Integer.toString(kvartsAmount) + "/" + kvartLimitAmount + "testing");
-				kvartsAmountView.setText("testing");
 			}
 		};
 	}
@@ -54,8 +52,6 @@ public class Steinbrudd extends Activity {
 	
 	/** In the steinbrudd.xml file onClick is set to trigger this method. It will start the digging process and count down till it ends and then update the kvarts amount*/
 	public void diggKvarts(final View view){
-//		kvartsAmountView.setText("testing");
-//	}
 		view.setClickable(false);
 		CountDownTimer countDownTimer= new CountDownTimer(30000, 1000) {
 
