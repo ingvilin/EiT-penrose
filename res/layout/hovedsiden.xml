@@ -9,6 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:inputType="number" />
+    
+     <TextView
+        android:id="@+id/kvartsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:inputType="number" />
     <RelativeLayout
         android:id="@+id/relativeLayout1"
