@@ -83,18 +83,9 @@ public class Trivia extends Activity{
 				levelButtonArray.get(0).setBackgroundColor(Color.GREEN);
 			}
 			});
-		question1Alert.setNeutralButton("b",  new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-			});
-		question1Alert.setNeutralButton("bl",  new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-			});
-		question1Alert.setNeutralButton("ba",  new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-			});
+		question1Alert.setNeutralButton("b",  null);
+		question1Alert.setNeutralButton("bl",  null);
+		question1Alert.setNeutralButton("ba",  null);
 		
 		question1Alert.show();
 	}
