@@ -36,10 +36,8 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 				}
 			}
 		});*/
-        
-//        aboutIntent = new Intent(getApplicationContext(), About.class);
-    }
 
+    }
 
 //    public void onClick(View view){
 //    	switch(view.getId()){
