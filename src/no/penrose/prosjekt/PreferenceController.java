@@ -30,10 +30,9 @@ public class PreferenceController extends PreferenceActivity {
 	}
 	
 	public static int loadIntPreferences(Context context, String key) {
-		SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE);//this.getSharedPreferences(PREF_NAME, MODE_WORLD_READABLE);//getPreferences(MODE_PRIVATE);
+		SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 		int savedInt = sharedPreferences.getInt(key, 0);
 		return savedInt;
-		//antallKvartsView.setText(kvartsTittel + Integer.toString(savedAntallKvarts) + "/" + maksKvartsGrense);
 	}
 
 }

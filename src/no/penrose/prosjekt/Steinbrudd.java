@@ -1,14 +1,10 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -16,13 +12,14 @@ public class Steinbrudd extends Activity implements OnClickListener{
 	private int maksKvartsGrense = 200;
 	private int antallKvarts = 0;
 	private TextView antallKvartsView;
+	private TextView utgravingstid;
 	private String kvartsTittel ="Kvarts: ";
-	private ProgressBar progressBar;
-	private Handler handler;
 	private ImageView kvarts_bilde;
 	public static final String KVARTS ="Kvarts";
 
 	private static final String OPT_KVARTS = "antall_kvarts";
+	
+	final MyCounter kvartsTimer = new MyCounter(10000, 1000); 
 
 	/** Called when the activity is first created. */
 	@Override
@@ -30,18 +27,12 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.steinbrudd);
 
-	//	progressBar = (ProgressBar) findViewById(R.id.progressbar);
-	//	this.handler = new Handler();
-		//		Runnable updateKvartsDigging = new Runnable() {
-		//			
-		//			public void run() {
-		//				// TODO Auto-generated method stub
-		//				antallKvarts = maksKvartsGrense;
-		//			}
-		//		};
-		
 		kvarts_bilde = (ImageView) findViewById(R.id.steinbrudd_image1);
         kvarts_bilde.setOnClickListener(this);
+        
+        utgravingstid = (TextView) findViewById(R.id.tid_gaatt_steinbrudd);
+        
+        //skrive over tid_gaatt_steinbrudd om dette er første gang og ikke fra tidligere 
 
 		antallKvartsView = (TextView) findViewById(R.id.editText1);
 		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
@@ -53,6 +44,7 @@ public class Steinbrudd extends Activity implements OnClickListener{
 			case R.id.steinbrudd_image1:
 				antallKvarts = 75;
 				PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
+				kvartsTimer.start();
 				break;
 	//		case R.id.til_fabrikken:
 	//			//sende tilbake data med putExtra
@@ -85,4 +77,34 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		editor.putString(key, value);
 		editor.commit();
 	}*/
+	
+	public class MyCounter extends CountDownTimer {
+		public MyCounter(long millisecInFuture, long countDownInterval) {
+			super(millisecInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onFinish() {
+			utgravingstid.setText("Utgravingen er ferdig!");
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			utgravingstid.setText((millisUntilFinished/1000)+"");
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
