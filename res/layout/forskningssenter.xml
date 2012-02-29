@@ -10,22 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
+
+    <ImageView
+        android:id="@+id/trivia"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="26dp"
-            android:src="@drawable/forskningsbygget"
-            android:onClick="forskningssenterOnClick" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:src="@drawable/trivia"
+        android:onClick="startTrivia" />
 
 </LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/buttonlevel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 1"
+        android:clickable="false"
+        android:onClick="levelEn" />
+
+    <Button
+        android:id="@+id/buttonlevel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 2" 
+        android:clickable="false"
+        android:onClick="levelEn"/>
+
+    <Button
+        android:id="@+id/buttonlevel3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 3" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 4" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 5" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 6" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 7" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 8" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 9" 
+        android:clickable="false"/>
+
+    <Button
+        android:id="@+id/buttonlevel10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 10" 
+        android:clickable="false"/>
+
+</LinearLayout>

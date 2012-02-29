@@ -16,7 +16,7 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	
 	private static Button newGameButton;
 	private static Button aboutButton;
-	private Intent newGameIntent, aboutIntent; 
+//	private Intent newGameIntent, aboutIntent; 
 	
 	/** Called when the activity is first created. */
     @Override
@@ -36,8 +36,8 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 				}
 			}
 		});*/
-    }
 
+    }
 
 //    public void onClick(View view){
 //    	switch(view.getId()){
