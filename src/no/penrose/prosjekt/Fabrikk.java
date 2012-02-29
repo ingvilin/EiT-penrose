@@ -1,9 +1,12 @@
 package no.penrose.prosjekt;
 
+import no.penrose.prosjekt.PreferenceController;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,7 +26,11 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private Button button_startProduksjonLegering;
 	private Button button_startProduksjonSolcelle;
 	
+	int testAntallKvarts = 0;
+	private static final String OPT_KVARTS = "antall_kvarts";
+	
 	Spill mSpill = new Spill();
+	
 	
 	/** Called when the activity is first created. */
     @Override
@@ -120,6 +127,9 @@ public class Fabrikk extends Activity implements OnClickListener {
 		switch(v.getId()) {
 		case R.id.fabrikk_image1:
 			toast("Min fabrikk.");
+			testAntallKvarts = 500;
+			//saveIntPreferences(OPT_KVARTS, 200);
+			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, 50);
 			break;
 		case R.id.fabrikk_image2:
 			toast("Oppgrader produksjonen??");
