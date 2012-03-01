@@ -26,19 +26,20 @@ public final class R {
         public static final int trivia=0x7f02000c;
     }
     public static final class id {
-        public static final int about_button=0x7f050011;
+        public static final int about_button=0x7f050012;
         public static final int avslutt=0x7f050008;
-        public static final int buttonlevel1=0x7f050017;
-        public static final int buttonlevel10=0x7f050020;
-        public static final int buttonlevel2=0x7f050018;
-        public static final int buttonlevel3=0x7f050019;
-        public static final int buttonlevel4=0x7f05001a;
-        public static final int buttonlevel5=0x7f05001b;
-        public static final int buttonlevel6=0x7f05001c;
-        public static final int buttonlevel7=0x7f05001d;
-        public static final int buttonlevel8=0x7f05001e;
-        public static final int buttonlevel9=0x7f05001f;
-        public static final int editText1=0x7f050013;
+        public static final int buttonlevel1=0x7f050018;
+        public static final int buttonlevel10=0x7f050021;
+        public static final int buttonlevel2=0x7f050019;
+        public static final int buttonlevel3=0x7f05001a;
+        public static final int buttonlevel4=0x7f05001b;
+        public static final int buttonlevel5=0x7f05001c;
+        public static final int buttonlevel6=0x7f05001d;
+        public static final int buttonlevel7=0x7f05001e;
+        public static final int buttonlevel8=0x7f05001f;
+        public static final int buttonlevel9=0x7f050020;
+        public static final int continue_button=0x7f050010;
+        public static final int editText1=0x7f050014;
         public static final int fabrikk_image1=0x7f050001;
         public static final int fabrikk_image2=0x7f050002;
         public static final int fabrikk_image3=0x7f050003;
@@ -47,17 +48,17 @@ public final class R {
         public static final int imageView2=0x7f05000e;
         public static final int imageView3=0x7f05000f;
         public static final int kvartsText=0x7f05000b;
-        public static final int new_game_button=0x7f050010;
+        public static final int new_game_button=0x7f050011;
         public static final int pengerText=0x7f050009;
         public static final int relativeLayout1=0x7f05000c;
         public static final int start_produksjon_elektro=0x7f050004;
         public static final int start_produksjon_legering=0x7f050005;
         public static final int start_produksjon_solcelle=0x7f050006;
-        public static final int steinbrudd_image1=0x7f050014;
-        public static final int steinbrudd_root=0x7f050012;
-        public static final int tid_gaatt_steinbrudd=0x7f050016;
+        public static final int steinbrudd_image1=0x7f050015;
+        public static final int steinbrudd_root=0x7f050013;
+        public static final int tid_gaatt_steinbrudd=0x7f050017;
         public static final int til_steinbruddet=0x7f050007;
-        public static final int timer_steinbrudd=0x7f050015;
+        public static final int timer_steinbrudd=0x7f050016;
         public static final int trivia=0x7f05000a;
     }
     public static final class layout {
@@ -71,21 +72,22 @@ public final class R {
     }
     public static final class string {
         public static final int about_button=0x7f040003;
-        public static final int about_label=0x7f040005;
-        public static final int about_text=0x7f040006;
-        public static final int about_title=0x7f040004;
+        public static final int about_label=0x7f040006;
+        public static final int about_text=0x7f040007;
+        public static final int about_title=0x7f040005;
         public static final int app_name=0x7f040000;
-        public static final int avslutt=0x7f040009;
-        public static final int fabrikk_label=0x7f040007;
-        public static final int kjope_stein=0x7f040010;
+        public static final int avslutt=0x7f04000a;
+        public static final int continue_label=0x7f040004;
+        public static final int fabrikk_label=0x7f040008;
+        public static final int kjope_stein=0x7f040011;
         public static final int main_label=0x7f040001;
         public static final int new_game_label=0x7f040002;
-        public static final int produksjon_title=0x7f04000a;
-        public static final int start_produksjon_elektro=0x7f04000b;
-        public static final int start_produksjon_legering=0x7f04000c;
-        public static final int start_produksjon_solcelle=0x7f04000d;
-        public static final int steinbrudd_label=0x7f04000e;
-        public static final int til_fabrikken=0x7f04000f;
-        public static final int til_steinbrudd=0x7f040008;
+        public static final int produksjon_title=0x7f04000b;
+        public static final int start_produksjon_elektro=0x7f04000c;
+        public static final int start_produksjon_legering=0x7f04000d;
+        public static final int start_produksjon_solcelle=0x7f04000e;
+        public static final int steinbrudd_label=0x7f04000f;
+        public static final int til_fabrikken=0x7f040010;
+        public static final int til_steinbrudd=0x7f040009;
     }
 }

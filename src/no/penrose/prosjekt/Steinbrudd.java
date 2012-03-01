@@ -6,11 +6,17 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.view.View.OnClickListener;
+import android.os.SystemClock;
 
 public class Steinbrudd extends Activity implements OnClickListener{
 	private int maksKvartsGrense = 200;
 	private int antallKvarts = 0;
+	private int diggTime = 10000; //tid det tar å grave - økes hver gang man graver, -1 betyr at denne tiden er brukt under pågående utgraving er aktiv
+	private int nextDiggTime = -1; //tiden neste utgraving tar, -1 betyr at diggTime er aktiv
+	private int diggCounter = 0; //tiden til gravingen er ferdig
+	private int startDiggTime = -1; //tiden når du gravingen startet, -1 om ingen utgraving pågård
 	private TextView antallKvartsView;
 	private TextView utgravingstid;
 	private String kvartsTittel ="Kvarts: ";
@@ -18,47 +24,102 @@ public class Steinbrudd extends Activity implements OnClickListener{
 	public static final String KVARTS ="Kvarts";
 
 	private static final String OPT_KVARTS = "antall_kvarts";
-	
-	final MyCounter kvartsTimer = new MyCounter(10000, 1000); 
+	private static final String OPT_DIGG_TIME = "gravetid_kvarts";
+	private static final String OPT_DIGG_COUNTER = "utfort_gravetid_kvarts";
+	private static final String OPT_START_DIGG_TIME = "tiden_da_aktiviteten_ble_avsluttet";
+	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.steinbrudd);
-
+		
 		kvarts_bilde = (ImageView) findViewById(R.id.steinbrudd_image1);
         kvarts_bilde.setOnClickListener(this);
         
         utgravingstid = (TextView) findViewById(R.id.tid_gaatt_steinbrudd);
+
+		diggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME);		
+		diggCounter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER);
+		startDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME);
+		nextDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME);
+		if(diggCounter > 0) {	
+			int sec = (int) SystemClock.elapsedRealtime();
+			toast("sec-startDiggTime[s]: " + (sec-startDiggTime));
+			if(startDiggTime != -1) {
+				if(diggCounter - ((sec - startDiggTime)) <= diggTime) {
+					diggCounter = 0;
+					startDiggTime = -1;
+					diggTime = nextDiggTime;
+					nextDiggTime = -1;
+					utgravingstid.setText("Utgravingen er ferdig.");
+				}
+				else {
+					diggCounter = diggCounter - (sec - startDiggTime);
+					startDiggTime = sec;
+					final MyCounter kvartsTimer = new MyCounter(diggCounter, 1000);
+					kvartsTimer.start();
+				}
+			}
+			else {
+				toast("diggCounter = " + diggCounter);
+				final MyCounter kvartsTimer = new MyCounter(diggCounter, 1000);
+				kvartsTimer.start();
+			}
+		}
+		else if(diggCounter == 0){
+			diggCounter = 0;
+			utgravingstid.setText("Ingen utgravning pågår.");
+		}
         
         //skrive over tid_gaatt_steinbrudd om dette er første gang og ikke fra tidligere 
 
 		antallKvartsView = (TextView) findViewById(R.id.editText1);
 		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
-		antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+		antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);	
 	}
 
 		public void onClick(View v) {
 			switch(v.getId()) {
 			case R.id.steinbrudd_image1:
-				antallKvarts = 75;
-				PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
-				kvartsTimer.start();
+				if(diggCounter == 0) {
+					startDiggTime = (int) SystemClock.elapsedRealtime();
+				//	PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, startDiggTime);
+					diggCounter = diggTime;
+					final MyCounter kvartsTimer = new MyCounter(diggCounter, 1000);
+					kvartsTimer.start();
+					nextDiggTime = diggTime + 10000;
+					diggTime = -1;
+					//----------------------------------------------------------
+					//dette skal ikke være her - skal være når timeren fullfører
+					antallKvarts = 100;
+					//----------------------------------------------------------
+				}
+				else {
+					toast("Utgravingen av kvarts er enda ikke ferdig.");
+				}
 				break;
-	//		case R.id.til_fabrikken:
-	//			//sende tilbake data med putExtra
-	//			finish();
-	//			break;
 			}
 		}
-
-	/** In the steinbrudd.xml file onClick is set to trigger this method. It will start the digging process and count down till it ends and then update the kvarts amount*/
 		
+	protected void onStop() {
+		super.onStop();
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER, diggCounter);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME, nextDiggTime);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME, diggTime);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, startDiggTime);
+	}
+
+	private void toast(String string) {
+		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+	}
+	
 	public void diggKvarts(final View view){
 		view.setClickable(false);
-
 	}
+	
 	public void updateKvartsScore(){
 		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
 	}
@@ -71,13 +132,6 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		this.antallKvarts = kvartsAmount;
 	}
 	
-/*	private void saveStringPreferences(String key, String value) {
-		SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPreferences.edit();
-		editor.putString(key, value);
-		editor.commit();
-	}*/
-	
 	public class MyCounter extends CountDownTimer {
 		public MyCounter(long millisecInFuture, long countDownInterval) {
 			super(millisecInFuture, countDownInterval);
@@ -85,7 +139,11 @@ public class Steinbrudd extends Activity implements OnClickListener{
 
 		@Override
 		public void onFinish() {
-			utgravingstid.setText("Utgravingen er ferdig!");
+			utgravingstid.setText("Utgravingen er ferdig.");
+			startDiggTime = -1;
+			diggCounter = 0;
+			diggTime = nextDiggTime;
+			nextDiggTime = -1;
 		}
 
 		@Override

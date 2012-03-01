@@ -13,6 +13,12 @@
         android:layout_marginBottom="30dip"
         android:textSize="25dip" />
     <Button 
+        android:id="@+id/continue_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_label"
+        android:gravity="center"/>
+    <Button 
         android:id="@+id/new_game_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

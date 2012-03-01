@@ -14,9 +14,15 @@ import android.widget.Toast;
 public class Silisiumspillet extends Activity implements OnClickListener {
 	private static final String TAG = "Silisiumspillet";
 	
+	private static final String OPT_KVARTS = "antall_kvarts";
+	private static final String OPT_DIGG_TIME = "gravetid_kvarts";
+	private static final String OPT_DIGG_COUNTER = "utfort_gravetid_kvarts";
+	private static final String OPT_START_DIGG_TIME = "tiden_da_aktiviteten_ble_avsluttet";
+	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
+	
 	private static Button newGameButton;
 	private static Button aboutButton;
-//	private Intent newGameIntent, aboutIntent; 
+	private static Button continueButton;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -29,6 +35,8 @@ public class Silisiumspillet extends Activity implements OnClickListener {
         newGameButton.setOnClickListener(this);
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(this);
+        continueButton = (Button) findViewById(R.id.continue_button);
+        continueButton.setOnClickListener(this);
         /*aboutButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (v.getId() == R.id.about_button) {
@@ -52,14 +60,17 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 
 	public void onClick(View v) {
     	switch(v.getId()) {
+    	case R.id.continue_button:
+    		startGame();
+    		break;
     	case R.id.new_game_button:
-    		//toast("Under utvikling!");
     		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
     		alertbox.setMessage("Du starter som eier av en silisiumfabrikk i trøndelag med 1 000 000 kr. Ditt mål er å øke" +
     				" profitten ved å invistere i forskning, oppgradere utstyr, rekrutere briliante NTNU-studenter og utvide" +
     				" produktsegmentet.");
     		alertbox.setNeutralButton("Start", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
+					init();
 					startGame();
 				}
 			});
@@ -72,12 +83,18 @@ public class Silisiumspillet extends Activity implements OnClickListener {
     	}	
     }
 	
+	private void init() {
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER, 0);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME, 10000);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, 1000);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, -1);
+	}
+	
 	private void startGame() {
 		Log.d(TAG, "clicked on ");
 		Intent i = new Intent(Silisiumspillet.this, Hovedsiden.class);
-		startActivity(i);
-		// TODO Auto-generated method stub
-		
+		startActivity(i);		
 	}
 
 	protected void toast(String string) {
