@@ -5,19 +5,27 @@ import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Trivia extends Activity{
 
-	private int kostnadTrivia;
-	private int levelTeller;
+	private int kostnadTrivia, levelTeller, questionTeller;
 	private Button buttonLevel1, buttonLevel2, buttonLevel3, buttonLevel4, buttonLevel5, buttonLevel6, buttonLevel7, buttonLevel8, buttonLevel9, buttonLevel10;
 	ArrayList <Button> levelButtonArray = new ArrayList<Button>();
+	private Dialog settingsDialog;
+	
 	public Trivia (){
 		levelTeller = 1;
 	}
@@ -53,40 +61,62 @@ public class Trivia extends Activity{
 		for (int i = 0; i < levelTeller-1; i++) {
 			levelButtonArray.get(i).setBackgroundColor(Color.GREEN);
 			}
+		
+		settingsDialog = new Dialog(this); 
 	}
 
 	public void levelEn(View view){
-
-		AlertDialog.Builder startAlertBox = new AlertDialog.Builder(this);
-		startAlertBox.setNegativeButton("Avbryt", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-
-			}
-		});
-		startAlertBox.setMessage("Denne avktiviteten koster " + kostnadTrivia + " kr.");
-		startAlertBox.setNeutralButton("Start", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			//TODO inkrementere penger.
-				level1Questions();
-				System.out.println("kjem du her -------------------------------");
-			}
-		});
-		startAlertBox.show();
+		questionTeller = 0;
+		settingsDialog = new Dialog(this);
+		settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
+		settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+		        , null)); 
+		settingsDialog.show(); 
 
 	}
 	
-	public void level1Questions(){
-		AlertDialog.Builder question1Alert = new AlertDialog.Builder(this);
-		question1Alert.setMessage("Hvilken kake skal vi spise neste kakedag?");
-		question1Alert.setPositiveButton("s",  new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				levelButtonArray.get(0).setBackgroundColor(Color.GREEN);
+	public void correctAnswer(View view){
+		switch(questionTeller){
+		case 0:
+			settingsDialog.dismiss();
+			settingsDialog = new Dialog(this);
+			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_two 
+			        , null)); 
+			settingsDialog.show(); 
+			questionTeller++;
+			break;
+		case 1:
+			settingsDialog.dismiss();
+			settingsDialog = new Dialog(this);
+			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+			        , null)); 
+			settingsDialog.show(); 
+			questionTeller++;
+			break;
+		case 2:
+			settingsDialog.dismiss();
+			settingsDialog = new Dialog(this);
+			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+			        , null)); 
+			settingsDialog.show(); 
+			questionTeller++;
+			break;
+		case 3:
+			settingsDialog.dismiss();
+			levelButtonArray.get(levelTeller-1).setBackgroundColor(Color.GREEN);
+			levelTeller++;
+			for (int i = 0; i < levelTeller; i++) {
+				levelButtonArray.get(i).setClickable(true);
 			}
-			});
-		question1Alert.setNeutralButton("b",  null);
-		question1Alert.setNeutralButton("bl",  null);
-		question1Alert.setNeutralButton("ba",  null);
-		
-		question1Alert.show();
+			break;
+		}
+			
+	}
+	
+	public void wrongAnswer(View view){
+		settingsDialog.dismiss();
 	}
 }

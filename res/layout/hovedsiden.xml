@@ -2,26 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/hovedsiden"
     android:orientation="vertical" >
-	
-    <TextView
-        android:id="@+id/pengerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:inputType="number" />
-    
-     <TextView
-        android:id="@+id/kvartsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:inputType="number" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/hovedsiden" >
+        android:gravity="top" >
+
+        <TextView
+            android:id="@+id/pengerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/kvartsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:inputType="number" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -30,28 +32,27 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="108dp"
-            android:src="@drawable/fabrikk"
-            android:onClick="fabrikkOnClick" />
+            android:onClick="fabrikkOnClick"
+            android:src="@drawable/fabrikk" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="26dp"
-            android:src="@drawable/kvarts"
-            android:onClick="steinbruddOnClick" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:onClick="steinbruddOnClick"
+            android:src="@drawable/kvarts" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="26dp"
-            android:src="@drawable/forskningsbygget"
-            android:onClick="forskningssenterOnClick" />
+            android:layout_below="@+id/pengerText"
+            android:layout_marginTop="36dp"
+            android:onClick="forskningssenterOnClick"
+            android:src="@drawable/forskningsbygget" />
 
     </RelativeLayout>
 
