@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fabrikk_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bakgrunn_fabrikk"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
-    <TextView 
+	<TextView 
         android:id="@+id/antall_kvarts_fabrikk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,13 +18,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number"/>
-    
+
+
     <RelativeLayout
-        android:id="@+id/relativeLayout_fabrikk"
+        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top">
-        
+        android:gravity="top" >
+
         <ImageView 
             android:id="@+id/ovn_level_1_frabrikk"
             android:layout_width="100dip"
@@ -52,10 +52,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginRight="25dip"/>
-        
+
     </RelativeLayout>
-    
-    
+
 </LinearLayout>
-
-

@@ -1,9 +1,7 @@
 package no.penrose.prosjekt;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceActivity;
 
 public class PreferenceController extends PreferenceActivity {

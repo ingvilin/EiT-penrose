@@ -13,21 +13,27 @@ import android.os.SystemClock;
 public class Steinbrudd extends Activity implements OnClickListener{
 	private int maksKvartsGrense = 200;
 	private int antallKvarts = 0;
+	private int antallPenger = -1;
 	private int diggTime = 10000; //tid det tar å grave - økes hver gang man graver, -1 betyr at denne tiden er brukt under pågående utgraving er aktiv
 	private int nextDiggTime = -1; //tiden neste utgraving tar, -1 betyr at diggTime er aktiv
 	private int diggCounter = 0; //tiden til gravingen er ferdig
 	private int startDiggTime = -1; //tiden når du gravingen startet, -1 om ingen utgraving pågård
 	private TextView antallKvartsView;
+	private TextView antallPengerView;
 	private TextView utgravingstid;
 	private String kvartsTittel ="Kvarts: ";
+	private String pengerTittel = "Penger: ";
 	private ImageView kvarts_bilde;
 	public static final String KVARTS ="Kvarts";
+	
+	private int prisUtgraving = 10000;
 
 	private static final String OPT_KVARTS = "antall_kvarts";
 	private static final String OPT_DIGG_TIME = "gravetid_kvarts";
 	private static final String OPT_DIGG_COUNTER = "utfort_gravetid_kvarts";
 	private static final String OPT_START_DIGG_TIME = "tiden_da_aktiviteten_ble_avsluttet";
 	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
+	private static final String OPT_MONEY = "antall_kroner";
 
 	/** Called when the activity is first created. */
 	@Override
@@ -39,12 +45,20 @@ public class Steinbrudd extends Activity implements OnClickListener{
         kvarts_bilde.setOnClickListener(this);
         
         utgravingstid = (TextView) findViewById(R.id.tid_gaatt_steinbrudd);
+        
+        antallKvartsView = (TextView) findViewById(R.id.editText1);
+		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
+		antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+		
+		antallPengerView = (TextView) findViewById(R.id.editText2);
+		antallPenger = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_MONEY);
+		antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 
 		diggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME);		
 		diggCounter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER);
 		startDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME);
 		nextDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME);
-		if(diggCounter > 0) {	
+		if(diggCounter > 0) {
 			int sec = (int) SystemClock.elapsedRealtime();
 			toast("sec-startDiggTime[s]: " + (sec-startDiggTime));
 			if(startDiggTime != -1) {
@@ -74,16 +88,14 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		}
         
         //skrive over tid_gaatt_steinbrudd om dette er første gang og ikke fra tidligere 
-
-		antallKvartsView = (TextView) findViewById(R.id.editText1);
-		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
-		antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);	
 	}
 
 		public void onClick(View v) {
 			switch(v.getId()) {
 			case R.id.steinbrudd_image1:
-				if(diggCounter == 0) {
+				if((diggCounter == 0) && (antallKvarts < maksKvartsGrense) && (antallPenger >= prisUtgraving)) {
+					antallPenger = antallPenger - prisUtgraving;
+					antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 					startDiggTime = (int) SystemClock.elapsedRealtime();
 				//	PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, startDiggTime);
 					diggCounter = diggTime;
@@ -91,13 +103,17 @@ public class Steinbrudd extends Activity implements OnClickListener{
 					kvartsTimer.start();
 					nextDiggTime = diggTime + 10000;
 					diggTime = -1;
+					//invalidate() penger;
 					//----------------------------------------------------------
 					//dette skal ikke være her - skal være når timeren fullfører
-					antallKvarts = 100;
+					//antallKvarts = 100;
 					//----------------------------------------------------------
 				}
-				else {
+				else if(diggCounter > 0) {
 					toast("Utgravingen av kvarts er enda ikke ferdig.");
+				}
+				else if(antallKvarts >= maksKvartsGrense) {
+					toast("Du har ikke plass på lageret til mer kvarts.");
 				}
 				break;
 			}
@@ -110,6 +126,7 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME, diggTime);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, startDiggTime);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, antallPenger);
 	}
 
 	private void toast(String string) {
@@ -143,7 +160,9 @@ public class Steinbrudd extends Activity implements OnClickListener{
 			startDiggTime = -1;
 			diggCounter = 0;
 			diggTime = nextDiggTime;
-			nextDiggTime = -1;
+			nextDiggTime = -1;	
+			antallKvarts = antallKvarts + 25;
+			antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
 		}
 
 		@Override

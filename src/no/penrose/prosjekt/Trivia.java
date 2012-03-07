@@ -1,23 +1,14 @@
 package no.penrose.prosjekt;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Trivia extends Activity{
@@ -91,8 +82,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one 
-			        , null)); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
 			break;
@@ -100,8 +90,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one
-			        , null)); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one  , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
 			break;
