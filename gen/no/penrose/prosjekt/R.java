@@ -19,11 +19,13 @@ public final class R {
         public static final int ic_launcher=0x7f020005;
         public static final int ic_launcher1=0x7f020006;
         public static final int kvarts=0x7f020007;
-        public static final int levelbuttonfinished=0x7f020008;
-        public static final int oppgrader=0x7f020009;
-        public static final int silisiumfabrikken=0x7f02000a;
-        public static final int steinbrudd=0x7f02000b;
-        public static final int trivia=0x7f02000c;
+        public static final int level_button=0x7f020008;
+        public static final int levelbutton=0x7f020009;
+        public static final int levelbuttonfinished=0x7f02000a;
+        public static final int oppgrader=0x7f02000b;
+        public static final int silisiumfabrikken=0x7f02000c;
+        public static final int steinbrudd=0x7f02000d;
+        public static final int trivia=0x7f02000e;
     }
     public static final class id {
         public static final int about_button=0x7f050012;

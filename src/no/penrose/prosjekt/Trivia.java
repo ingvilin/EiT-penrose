@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Trivia extends Activity{
 
@@ -69,7 +70,7 @@ public class Trivia extends Activity{
 		questionTeller = 0;
 		settingsDialog = new Dialog(this);
 		settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-		settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+		settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one 
 		        , null)); 
 		settingsDialog.show(); 
 
@@ -90,7 +91,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one 
 			        , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
@@ -99,7 +100,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_layout 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one
 			        , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
@@ -107,16 +108,20 @@ public class Trivia extends Activity{
 		case 3:
 			settingsDialog.dismiss();
 			levelButtonArray.get(levelTeller-1).setBackgroundDrawable(getResources().getDrawable(R.drawable.levelbuttonfinished));
+			levelButtonArray.get(levelTeller-1).setClickable(false);
 			levelTeller++;
+			levelButtonArray.get(levelTeller-1).setClickable(true);
 			for (int i = 0; i < levelTeller; i++) {
-				levelButtonArray.get(i).setClickable(true);
+				System.out.println("Er denne sant tralalalala " + levelButtonArray.get(i).isClickable() + "     " + i);
 			}
-			break;
+			
 		}
 			
 	}
 	
 	public void wrongAnswer(View view){
+		Toast toast = Toast.makeText(getApplicationContext(), "Feil svar", Toast.LENGTH_SHORT);
 		settingsDialog.dismiss();
+		toast.show();
 	}
 }
