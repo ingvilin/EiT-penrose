@@ -20,6 +20,7 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	private static final String OPT_START_DIGG_TIME = "tiden_da_aktiviteten_ble_avsluttet";
 	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
 	private static final String OPT_MONEY = "antall_kroner";
+	private static final String OPT_LEVEL = "spillerens_level";
 	
 	private static Button newGameButton;
 	private static Button aboutButton;
@@ -91,6 +92,7 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, 0);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, 1000000);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_LEVEL, 1);
 	}
 	
 	private void startGame() {
