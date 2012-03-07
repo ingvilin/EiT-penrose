@@ -129,7 +129,7 @@ public class Fabrikk extends Activity implements OnClickListener {
 			toast("Min fabrikk.");
 			testAntallKvarts = 500;
 			//saveIntPreferences(OPT_KVARTS, 200);
-			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, 50);
+			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, 200);
 			break;
 		case R.id.fabrikk_image2:
 			toast("Oppgrader produksjonen??");
