@@ -106,7 +106,7 @@ public class Trivia extends Activity{
 			break;
 		case 3:
 			settingsDialog.dismiss();
-			levelButtonArray.get(levelTeller-1).setBackgroundColor(Color.GREEN);
+			levelButtonArray.get(levelTeller-1).setBackgroundDrawable(getResources().getDrawable(R.drawable.levelbuttonfinished));
 			levelTeller++;
 			for (int i = 0; i < levelTeller; i++) {
 				levelButtonArray.get(i).setClickable(true);

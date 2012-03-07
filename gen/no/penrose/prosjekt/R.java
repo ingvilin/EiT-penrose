@@ -66,7 +66,7 @@ public final class R {
         public static final int fabrikk=0x7f030002;
         public static final int forskningssenter=0x7f030003;
         public static final int hovedsiden=0x7f030004;
-        public static final int level_one_layout=0x7f030005;
+        public static final int level_one_question_one=0x7f030005;
         public static final int level_one_question_two=0x7f030006;
         public static final int main=0x7f030007;
         public static final int steinbrudd=0x7f030008;
