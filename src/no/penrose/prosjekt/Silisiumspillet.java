@@ -21,6 +21,11 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
 	private static final String OPT_MONEY = "antall_kroner";
 	private static final String OPT_LEVEL = "spillerens_level";
+	private static final String OPT_OVEN_LOCK_LEVEL1 = "oven_level_1_kjopt";
+	private static final String OPT_OVEN_LOCK_LEVEL2 = "oven_level_2_kjopt";
+	private static final String OPT_OVEN_LOCK_LEVEL3 = "oven_level_3_kjopt";
+	private static final String OPT_AMOUNT_HCl = "mengde_hcl";
+	private static final String OPT_AMOUNT_ZIRKON = "mengde_zirkon";
 	
 	private static Button newGameButton;
 	private static Button aboutButton;
@@ -93,6 +98,11 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_DIGG_TIME, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, 1000000);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_LEVEL, 1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL1, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL2, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL3, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl, 0);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON, 0);
 	}
 	
 	private void startGame() {
