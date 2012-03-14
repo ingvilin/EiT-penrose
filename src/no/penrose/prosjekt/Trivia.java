@@ -18,12 +18,14 @@ public class Trivia extends Activity{
 	ArrayList <Button> levelButtonArray = new ArrayList<Button>();
 	private Dialog settingsDialog;
 	
-	public Trivia (){
-		levelTeller = 1;
-	}
+	private static final String OPT_MONEY = "antall_kroner";
+	private static final String OPT_LEVEL = "spillerens_level";
+	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
+		
+		levelTeller = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
 		
 		buttonLevel1 = (Button) findViewById(R.id.buttonlevel1);
 		buttonLevel2 = (Button) findViewById(R.id.buttonlevel2);
@@ -51,10 +53,11 @@ public class Trivia extends Activity{
 			levelButtonArray.get(i).setClickable(true);
 		}
 		for (int i = 0; i < levelTeller-1; i++) {
-			levelButtonArray.get(i).setBackgroundColor(Color.GREEN);
+			levelButtonArray.get(i).setBackgroundDrawable(getResources().getDrawable(R.drawable.levelbuttonfinished));
 			}
 		
 		settingsDialog = new Dialog(this); 
+		System.out.println("dette er leveltelleren trololololololo " + levelTeller);
 	}
 
 	public void levelEn(View view){
@@ -99,6 +102,8 @@ public class Trivia extends Activity{
 			levelButtonArray.get(levelTeller-1).setBackgroundDrawable(getResources().getDrawable(R.drawable.levelbuttonfinished));
 			levelButtonArray.get(levelTeller-1).setClickable(false);
 			levelTeller++;
+			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_LEVEL, levelTeller);
+
 			levelButtonArray.get(levelTeller-1).setClickable(true);
 			for (int i = 0; i < levelTeller; i++) {
 				System.out.println("Er denne sant tralalalala " + levelButtonArray.get(i).isClickable() + "     " + i);
