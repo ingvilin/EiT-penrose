@@ -26,6 +26,9 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	private static final String OPT_OVEN_LOCK_LEVEL3 = "oven_level_3_kjopt";
 	private static final String OPT_AMOUNT_HCl = "mengde_hcl";
 	private static final String OPT_AMOUNT_ZIRKON = "mengde_zirkon";
+	private static final String OPT_AMOUNT_METALLURGISK_SILISUM = "mengde_mg_silisium";
+	private static final String OPT_AMOUNT_EG_SILISUM = "mengde_eg_silisum";
+	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
 	
 	private static Button newGameButton;
 	private static Button aboutButton;
@@ -103,6 +106,9 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL3, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl, 0);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON, 0);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM, 0);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM, 0);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM, 0);
 	}
 	
 	private void startGame() {

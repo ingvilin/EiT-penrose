@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,13 +23,14 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private TextView antallPengerView;	
 	private TextView antallKvartsView;
 	private TextView levelView;
-	private TextView antallMetallurgiskSillisumView;
-	private TextView antallRentSillisumView;
+	private TextView antallMetallurgiskSilisumView;
+	private TextView antallRentSilisumView;
 	
 	private int level = -1;
 	private int antallKvarts = -1;
-	private int antallMetallurgiskSillisum = -1;
-	private int antallRentSillisum = -1;
+	private int antallMetallurgiskSilisum = -1;
+	private int antallEgSilisum = -1;
+	private int antallRentSilisum = -1;
 	private int antallPenger = -1;
 	private int antallHCl = -1;
 	private int antallZirkonium = -1;
@@ -52,8 +54,9 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private String pengerTittel = "Penger: ";
 	private String kvartsTittel = "Kvarts: ";
 	private String levelTittel = "Level: ";
-	private String metallurgiskSillisumTittel = "Metallurgisks sillisum: ";
-	private String rentSillisiumTittel = "Rent sillisium";
+	private String metallurgiskSilisumTittel = "Metallurgisks grad silisum: ";
+	private String egSilisum = "Eg silisum: ";
+	private String rentSilisiumTittel = "Rent silisium: ";
 
 	private static final String OPT_KVARTS = "antall_kvarts";
 	private static final String OPT_LEVEL = "spillerens_level";
@@ -63,8 +66,9 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private static final String OPT_OVEN_LOCK_LEVEL3 = "oven_level_3_kjopt";
 	private static final String OPT_AMOUNT_HCl = "mengde_hcl";
 	private static final String OPT_AMOUNT_ZIRKON = "mengde_zirkon";
-	private static final String OPT_AMOUNT_METALLURGISK_SILLISUM = "mengde_eg_silisium";
-	private static final String OPT_AMOUNT_RENT_SILLSIUM = "mengde_rent_sillisum";
+	private static final String OPT_AMOUNT_METALLURGISK_SILISUM = "mengde_mg_silisium";
+	private static final String OPT_AMOUNT_EG_SILISUM = "mengde_eg_silisum";
+	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
 	
 	/** Called when the activity is first created. */
     @Override
@@ -78,13 +82,13 @@ public class Fabrikk extends Activity implements OnClickListener {
         image_level3 = (ImageView) findViewById(R.id.ovn_level_3_frabrikk);
         image_level3.setOnClickListener(this);
         
-        antallMetallurgiskSillisumView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_fabrikk);
-        antallMetallurgiskSillisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILLISUM);
-        antallMetallurgiskSillisumView.setText(metallurgiskSillisumTittel + Integer.toString(antallMetallurgiskSillisum));
+        antallMetallurgiskSilisumView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_fabrikk);
+        antallMetallurgiskSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
+        antallMetallurgiskSilisumView.setText(metallurgiskSilisumTittel + Integer.toString(antallMetallurgiskSilisum));
         
-        antallRentSillisumView = (TextView) findViewById(R.id.antall_rent_sillisum_fabrikk);
-        antallRentSillisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILLSIUM);
-        antallRentSillisumView.setText(rentSillisiumTittel + Integer.toString(antallRentSillisum));
+        antallRentSilisumView = (TextView) findViewById(R.id.antall_rent_sillisum_fabrikk);
+        antallRentSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
+        antallRentSilisumView.setText(rentSilisiumTittel + Integer.toString(antallRentSilisum));
         
         unlocked_oven_level1 = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL1);
         unlocked_oven_level2 = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL2);
@@ -116,7 +120,6 @@ public class Fabrikk extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.ovn_level_1_frabrikk:
-			//legge in else if på om du har nok kvarts
 			if(unlocked_oven_level1 == -1) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage("Ønsker du å kjøpe ovenen til en pris av 200 000 kr?").setCancelable(false)
@@ -186,7 +189,7 @@ public class Fabrikk extends Activity implements OnClickListener {
 					.show();
 			}
 			//legge inn else if på du har nok av metalurgisk silisum til å fordle det og HCL
-			else if((antallMetallurgiskSillisum >= 50) && (antallPenger >= price_oven_2 + environment_cost_level2)) {
+			else if((antallMetallurgiskSilisum >= 50) && (antallPenger >= price_oven_2 + environment_cost_level2)) {
 				//sette på klokke
 				//trekke penger
 				//trekke metallurgisk silisum
@@ -194,11 +197,11 @@ public class Fabrikk extends Activity implements OnClickListener {
 				//(adde rent sillisum) - det du får
 			}
 			else {
-				if((antallMetallurgiskSillisum < 50) && (antallPenger < price_oven_2 + environment_cost_level2)) {
-					toast("Du har ikke tilstrekkelig med verken kvarts eller penger.");
+				if((antallMetallurgiskSilisum < 50) && (antallPenger < price_oven_2 + environment_cost_level2)) {
+					toast("Du har ikke tilstrekkelig med verken metallurgisk grad silisum eller penger.");
 				}
-				else if(antallMetallurgiskSillisum < 50) {
-					toast("Du har ikke tilstrekkelig med kvarts.");
+				else if(antallMetallurgiskSilisum < 50) {
+					toast("Du har ikke tilstrekkelig med metallurgisk grad silisum.");
 				}
 				else if(antallPenger < price_oven_2 + environment_cost_level2) {
 					toast("Du har ikke tilstrekkelig med penger.");
@@ -232,8 +235,23 @@ public class Fabrikk extends Activity implements OnClickListener {
 					})
 					.show();
 			}
+			else if((antallEgSilisum >= 50) && (antallPenger >= price_oven_3 + environment_cost_level3)) {
+				//sette på klokke
+				//trekke penger
+				//trekke metallurgisk silisum
+				//(gevinst med en gang eller lagres om andre former for sillisum??)
+				//(adde rent sillisum) - det du får
+			}
 			else {
-				toast("Du har allerede kjøpt ovenen.");
+				if((antallEgSilisum < 50) && (antallPenger < price_oven_3 + environment_cost_level3)) {
+					toast("Du har ikke tilstrekkelig med verken E grad silisum eller penger.");
+				}
+				else if(antallEgSilisum < 50) {
+					toast("Du har ikke tilstrekkelig med kvarts.");
+				}
+				else if(antallPenger < price_oven_3 + environment_cost_level3) {
+					toast("Du har ikke tilstrekkelig med penger.");
+				}
 			}
 			break;
 		}
@@ -347,4 +365,26 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
 	}
+	
+	/*public class MyCounter extends CountDownTimer {
+		public MyCounter(long millisecInFuture, long countDownInterval) {
+			super(millisecInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onFinish() {
+			utgravingstid.setText("Utgravingen er ferdig.");
+			startDiggTime = -1;
+			diggCounter = 0;
+			diggTime = nextDiggTime;
+			nextDiggTime = -1;	
+			antallKvarts = antallKvarts + 25;
+			antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			utgravingstid.setText((millisUntilFinished/1000)+"");
+		}
+	}*/
 }
