@@ -4,15 +4,12 @@ import no.penrose.prosjekt.PreferenceController;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +21,18 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private TextView antallKvartsView;
 	private TextView levelView;
 	private TextView antallMetallurgiskSilisumView;
+	private TextView antallEgSilisumView;
 	private TextView antallRentSilisumView;
+	private TextView utvinningstidView;
+	
+	private int counter = -1;
+	private int startTimeCounter = -1;
+	private int ovenOn = -1; //hvilken ovn som er på, 1 for ovn1, 2 for ovn2 og 3 for ovn3, -1 er ingen på (funker som lås)
+	
+	private int priceHCl = 25;
+	private int priceZirkonium = 25;
+	private int priceMetallurgiskSilisum = 50;
+	private int priceEgSilisum = 50;
 	
 	private int level = -1;
 	private int antallKvarts = -1;
@@ -54,9 +62,9 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private String pengerTittel = "Penger: ";
 	private String kvartsTittel = "Kvarts: ";
 	private String levelTittel = "Level: ";
-	private String metallurgiskSilisumTittel = "Metallurgisks grad silisum: ";
-	private String egSilisum = "Eg silisum: ";
-	private String rentSilisiumTittel = "Rent silisium: ";
+	private String metallurgiskSilisumTittel = "Mg Si: ";
+	private String egSilisumTittel = "Eg Si: ";
+	private String rentSilisiumTittel = "Sg Si: ";
 
 	private static final String OPT_KVARTS = "antall_kvarts";
 	private static final String OPT_LEVEL = "spillerens_level";
@@ -69,6 +77,9 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private static final String OPT_AMOUNT_METALLURGISK_SILISUM = "mengde_mg_silisium";
 	private static final String OPT_AMOUNT_EG_SILISUM = "mengde_eg_silisum";
 	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
+	private static final String OPT_START_TIMER_COUNTER = "tidpunktet_utvinning_startet";
+	private static final String OPT_COUNTER_OVEN = "teller_utvinningstid";
+	private static final String OPT_OVEN_ON = "hvilken_ovn_som_utvinner";
 	
 	/** Called when the activity is first created. */
     @Override
@@ -85,6 +96,10 @@ public class Fabrikk extends Activity implements OnClickListener {
         antallMetallurgiskSilisumView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_fabrikk);
         antallMetallurgiskSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
         antallMetallurgiskSilisumView.setText(metallurgiskSilisumTittel + Integer.toString(antallMetallurgiskSilisum));
+        
+        antallEgSilisumView = (TextView) findViewById(R.id.antall_eg_sillisum_fabrikk);
+        antallEgSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM);
+        antallEgSilisumView.setText(egSilisumTittel + Integer.toString(antallEgSilisum));
         
         antallRentSilisumView = (TextView) findViewById(R.id.antall_rent_sillisum_fabrikk);
         antallRentSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
@@ -115,11 +130,27 @@ public class Fabrikk extends Activity implements OnClickListener {
         	image_level3.setVisibility(View.INVISIBLE);
         }
         updateProductionFactors();
+        
+        utvinningstidView = (TextView) findViewById(R.id.utvinningstid_fabrikk);
+        startTimeCounter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_START_TIMER_COUNTER);
+        counter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_COUNTER_OVEN);
+        ovenOn = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_OVEN_ON);
+        if(ovenOn != -1) {
+        	int sec = (int) SystemClock.elapsedRealtime();
+        	counter = counter - (sec - startTimeCounter);
+        	startTimeCounter = sec;
+        	final MyCounter klokke = new MyCounter(counter, 1000);
+        	klokke.start();
+        }
+        else {
+        	utvinningstidView.setText("Ingen utvinning pågår.");
+        }
     }
 
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.ovn_level_1_frabrikk:
+			antallKvarts = 100; //DENNE MÅ BORT ETTER HVERTTTTTTTTTTTTTTTTTTT
 			if(unlocked_oven_level1 == -1) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage("Ønsker du å kjøpe ovenen til en pris av 200 000 kr?").setCancelable(false)
@@ -143,26 +174,53 @@ public class Fabrikk extends Activity implements OnClickListener {
 					})
 					.show();
 			}
-			else if((antallKvarts >= 50) && (antallPenger >= price_oven_1 + environment_cost_level1)) {
-				//sette på klokke
-				//trekke penger
-				//trekke kvarts
-				//(gevinst med en gang eller lagres om andre former for sillisum??)
-				//(det må addes metallurgisk silisum) - det du får
+			else if(counter == -1) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Ønsker du å utvinne metallurgisk grad silisum (Mg Si) til en pris av " + (price_oven_1 + environment_cost_level1)	 + "?").setCancelable(false)
+					.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							if((antallKvarts >= 50) && (antallPenger >= price_oven_1 + environment_cost_level1)) {
+								counter = speed_oven_1;
+								ovenOn = 1;
+								startTimeCounter = (int) SystemClock.elapsedRealtime();
+								antallPenger = antallPenger - price_oven_1 - environment_cost_level1;
+								antallKvarts = antallKvarts - 50;
+								antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+								antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+								final MyCounter klokke = new MyCounter(counter, 1000);
+								klokke.start();
+							}
+							else {
+								if((antallKvarts < 50) && (antallPenger < price_oven_1 + environment_cost_level1)) {
+									toast("Du har ikke tilstrekkelig med verken kvarts eller penger.");
+								}
+								else if(antallKvarts < 50) {
+									toast("Du har ikke tilstrekkelig med kvarts.");
+								}
+								else if(antallPenger < price_oven_1 + environment_cost_level1) {
+									toast("Du har ikke tilstrekkelig med penger.");
+								}
+							}
+						}
+					})
+					.setNegativeButton("Nei", new DialogInterface.OnClickListener() {	
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					})
+					.show();
 			}
 			else {
-				if((antallKvarts < 50) && (antallPenger < price_oven_1 + environment_cost_level1)) {
-					toast("Du har ikke tilstrekkelig med verken kvarts eller penger.");
+				if(ovenOn == 1) { 
+					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
-				else if(antallKvarts < 50) {
-					toast("Du har ikke tilstrekkelig med kvarts.");
+				else if (ovenOn == 2) {
+					toast("Utvinning av e grad silisum pågår.");
 				}
-				else if(antallPenger < price_oven_1 + environment_cost_level1) {
-					toast("Du har ikke tilstrekkelig med penger.");
+				else if(ovenOn == 3) {
+					toast("Utvinning av s grad silisum pågår.");
 				}
 			}
-			//level = 6;
-			//levelView.setText(levelTittel + Integer.toString(level) + "/10");
 			break;
 		case R.id.ovn_level_2_frabrikk:
 			if(unlocked_oven_level2 == -1) {
@@ -188,30 +246,58 @@ public class Fabrikk extends Activity implements OnClickListener {
 					})
 					.show();
 			}
-			//legge inn else if på du har nok av metalurgisk silisum til å fordle det og HCL
-			else if((antallMetallurgiskSilisum >= 50) && (antallPenger >= price_oven_2 + environment_cost_level2)) {
-				//sette på klokke
-				//trekke penger
-				//trekke metallurgisk silisum
-				//(gevinst med en gang eller lagres om andre former for sillisum??)
-				//(adde rent sillisum) - det du får
+			else if(counter == -1) { 
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Ønsker du å utvinne (Eg Si) til en pris " + (price_oven_2 + environment_cost_level2) + "?").setCancelable(false)
+					.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							if((antallMetallurgiskSilisum >= priceMetallurgiskSilisum) && (antallPenger >= price_oven_2 + environment_cost_level2) && (antallHCl >= priceHCl)) {
+								counter = speed_oven_2;
+								ovenOn = 2;
+								startTimeCounter = (int) SystemClock.elapsedRealtime();
+								antallPenger = antallPenger - price_oven_2 - environment_cost_level2;
+								antallMetallurgiskSilisum = antallMetallurgiskSilisum - priceMetallurgiskSilisum;
+								antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+								antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+								final MyCounter klokke = new MyCounter(counter, 1000);
+								klokke.start();		
+							}
+							else {
+								if((antallMetallurgiskSilisum < priceMetallurgiskSilisum) && (antallPenger < price_oven_2 + environment_cost_level2) && (antallHCl < priceHCl)) {
+									toast("Du har ikke tilstrekkelig med verken metallurgisk grad silisum, HCl eller penger.");
+								}
+								else if(antallMetallurgiskSilisum < priceMetallurgiskSilisum) {
+									toast("Du har ikke tilstrekkelig med metallurgisk grad silisum.");
+								}
+								else if(antallPenger < price_oven_2 + environment_cost_level2) {
+									toast("Du har ikke tilstrekkelig med penger.");
+								}
+								else if(antallHCl < priceHCl) {
+									toast("Du har ikke tilstrekkelig med saltsyre.");
+								}
+							}
+						}
+					})
+					.setNegativeButton("Nei", new DialogInterface.OnClickListener() {	
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					})
+					.show();
 			}
 			else {
-				if((antallMetallurgiskSilisum < 50) && (antallPenger < price_oven_2 + environment_cost_level2)) {
-					toast("Du har ikke tilstrekkelig med verken metallurgisk grad silisum eller penger.");
+				if(ovenOn == 1) { 
+					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
-				else if(antallMetallurgiskSilisum < 50) {
-					toast("Du har ikke tilstrekkelig med metallurgisk grad silisum.");
+				else if (ovenOn == 2) {
+					toast("Utvinning av e grad silisum pågår.");
 				}
-				else if(antallPenger < price_oven_2 + environment_cost_level2) {
-					toast("Du har ikke tilstrekkelig med penger.");
+				else if(ovenOn == 3) {
+					toast("Utvinning av s grad silisum pågår.");
 				}
 			}
-			//level = 1;
-			//levelView.setText(levelTittel + Integer.toString(level) + "/10");	
 			break;
 		case R.id.ovn_level_3_frabrikk:
-			//legge inn else if på om du har nok av EG silsium og zirkonium
 			if(unlocked_oven_level3 == -1) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage("Ønsker du å kjøpe ovenen til en pris av 400 000 kr?").setCancelable(false)
@@ -235,22 +321,54 @@ public class Fabrikk extends Activity implements OnClickListener {
 					})
 					.show();
 			}
-			else if((antallEgSilisum >= 50) && (antallPenger >= price_oven_3 + environment_cost_level3)) {
-				//sette på klokke
-				//trekke penger
-				//trekke metallurgisk silisum
-				//(gevinst med en gang eller lagres om andre former for sillisum??)
-				//(adde rent sillisum) - det du får
+			else if(counter == 1) { 
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage("Ønsker du å utvinne (Sg Si) til en pris av " + Integer.toString(price_oven_3 + environment_cost_level3) + "?").setCancelable(false)
+					.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							if((antallEgSilisum >= priceEgSilisum) && (antallPenger >= price_oven_3 + environment_cost_level3) && (antallZirkonium >= priceZirkonium)) {
+								counter = speed_oven_3;
+								ovenOn = 3;
+								startTimeCounter = (int) SystemClock.elapsedRealtime();
+								antallPenger = antallPenger - price_oven_3 - environment_cost_level3;
+								antallEgSilisum = antallEgSilisum - priceEgSilisum;
+								antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+								antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+								final MyCounter klokke = new MyCounter(counter, 1000);
+								klokke.start();		
+							}
+							else {
+								if((antallEgSilisum < priceEgSilisum) && (antallPenger < price_oven_3 + environment_cost_level3) && (antallZirkonium < priceZirkonium)) {
+									toast("Du har ikke tilstrekkelig med verken E grad silisum eller penger.");
+								}
+								else if(antallEgSilisum < priceEgSilisum) {
+									toast("Du har ikke tilstrekkelig med kvarts.");
+								}
+								else if(antallPenger < price_oven_3 + environment_cost_level3) {
+									toast("Du har ikke tilstrekkelig med penger.");
+								}
+								else if(antallZirkonium < priceZirkonium) {
+									toast("Du har ikke tilstrekkelig med Zirkonium");
+								}
+							}
+						}
+					})
+					.setNegativeButton("Nei", new DialogInterface.OnClickListener() {	
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					})
+					.show();
 			}
 			else {
-				if((antallEgSilisum < 50) && (antallPenger < price_oven_3 + environment_cost_level3)) {
-					toast("Du har ikke tilstrekkelig med verken E grad silisum eller penger.");
+				if(ovenOn == 1) { 
+					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
-				else if(antallEgSilisum < 50) {
-					toast("Du har ikke tilstrekkelig med kvarts.");
+				else if (ovenOn == 2) {
+					toast("Utvinning av e grad silisum pågår.");
 				}
-				else if(antallPenger < price_oven_3 + environment_cost_level3) {
-					toast("Du har ikke tilstrekkelig med penger.");
+				else if(ovenOn == 3) {
+					toast("Utvinning av s grad silisum pågår.");
 				}
 			}
 			break;
@@ -260,77 +378,77 @@ public class Fabrikk extends Activity implements OnClickListener {
 	private void updateProductionFactors() {
 		if(level == 1) {
 			factor_level1 = 0.3;
-			speed_oven_1 = 180;
+			speed_oven_1 = 180000;
 			price_oven_1 = 100000;
 			environment_cost_level1 = 100000;
 		}
 		else if(level == 2) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 170;
+			speed_oven_1 = 170000;
 			price_oven_1 = 90000;
 			environment_cost_level1 = 50000;
 		}
 		else if(level == 3) {
 			factor_level1 = 0.5;
-			speed_oven_1 = 160;
+			speed_oven_1 = 160000;
 			price_oven_1 = 80000;
 			environment_cost_level1 = 50000;
 		}
 		else if(level == 4) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			environment_cost_level1 = 0;
 		}
 		else if(level == 5) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.5;
-			speed_oven_2 = 150;
+			speed_oven_2 = 150000;
 			price_oven_2 = 100000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 10000;
 		}
 		else if(level == 6) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.5;
-			speed_oven_2 = 140;
+			speed_oven_2 = 140000;
 			price_oven_2 = 90000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 10000;
 		}
 		else if(level == 7) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.6;
-			speed_oven_2 = 130;
+			speed_oven_2 = 130000;
 			price_oven_2 = 80000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 10000;
 		}
 		else if(level == 8) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.6;
-			speed_oven_2 = 120;
+			speed_oven_2 = 120000;
 			price_oven_2 = 70000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 0;
 		}
 		else if(level == 9) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.6;
-			speed_oven_2 = 120;
+			speed_oven_2 = 120000;
 			price_oven_2 = 70000;
 			factor_level3 = 0.6;
-			speed_oven_3 = 120;
+			speed_oven_3 = 120000;
 			price_oven_3 = 80000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 0;
@@ -338,13 +456,13 @@ public class Fabrikk extends Activity implements OnClickListener {
 		}
 		else if(level == 10) {
 			factor_level1 = 0.4;
-			speed_oven_1 = 150;
+			speed_oven_1 = 150000;
 			price_oven_1 = 70000;
 			factor_level2 = 0.6;
-			speed_oven_2 = 120;
+			speed_oven_2 = 120000;
 			price_oven_2 = 70000;
 			factor_level3 = 0.7;
-			speed_oven_3 = 100;
+			speed_oven_3 = 100000;
 			price_oven_3 = 70000;
 			environment_cost_level1 = 0;
 			environment_cost_level2 = 0;
@@ -360,31 +478,48 @@ public class Fabrikk extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL1, unlocked_oven_level1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL2, unlocked_oven_level2);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_LOCK_LEVEL3, unlocked_oven_level3);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl, antallHCl);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON, antallZirkonium);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM, antallMetallurgiskSilisum);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM, antallEgSilisum);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM, antallRentSilisum);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_ON, ovenOn);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_TIMER_COUNTER, startTimeCounter);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_COUNTER_OVEN, counter);
 	}
 
 	private void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
 	}
 	
-	/*public class MyCounter extends CountDownTimer {
+	public class MyCounter extends CountDownTimer {
 		public MyCounter(long millisecInFuture, long countDownInterval) {
 			super(millisecInFuture, countDownInterval);
 		}
 
 		@Override
 		public void onFinish() {
-			utgravingstid.setText("Utgravingen er ferdig.");
-			startDiggTime = -1;
-			diggCounter = 0;
-			diggTime = nextDiggTime;
-			nextDiggTime = -1;	
-			antallKvarts = antallKvarts + 25;
-			antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+			utvinningstidView.setText("Ingen utvinning pågår");
+			counter = -1;
+			startTimeCounter = -1;
+			if(ovenOn == 1) {
+				antallMetallurgiskSilisum = antallMetallurgiskSilisum + (int)(factor_level1 * price_oven_1);
+			}
+			else if(ovenOn == 2) {
+				antallEgSilisum = antallEgSilisum + (int)(factor_level2 * price_oven_2);
+			}
+			else if(ovenOn == 3) {
+				antallRentSilisum = antallRentSilisum + (int)(factor_level3 * price_oven_3);
+			}
+			ovenOn = -1; //funker som lås
+			antallMetallurgiskSilisumView.setText(metallurgiskSilisumTittel + Integer.toString(antallMetallurgiskSilisum));
+			antallEgSilisumView.setText(egSilisumTittel + Integer.toString(antallEgSilisum));
+			antallRentSilisumView.setText(rentSilisiumTittel + Integer.toString(antallRentSilisum));
 		}
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			utgravingstid.setText((millisUntilFinished/1000)+"");
+			utvinningstidView.setText((millisUntilFinished/1000)+"");
 		}
-	}*/
+	}
 }

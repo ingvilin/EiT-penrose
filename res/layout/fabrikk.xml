@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout 
-        android:layout_height="50dip"
+        android:layout_height="75dip"
         android:layout_width="fill_parent"
         android:orientation="horizontal">
         
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number"
-        android:layout_alignParentLeft="true"
+        android:textColor="#000000"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"/>
             
             <TextView 
@@ -31,8 +32,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"/>
+        android:textColor="#000000"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/antall_kvarts_fabrikk"/>
+            
+            <TextView 
+        android:id="@+id/antall_eg_sillisum_fabrikk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/antall_metallurgisk_sillisum_fabrikk"/>
             
             <TextView 
         android:id="@+id/antall_rent_sillisum_fabrikk"
@@ -40,17 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"/>
-            
-                <TextView 
-        android:id="@+id/antall_penger_fabrikk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:inputType="number"
+        android:textColor="#000000"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_below="@id/antall_eg_sillisum_fabrikk"/>
             
             <TextView 
         android:id="@+id/level_fabrikk"
@@ -58,9 +62,38 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:inputType="number"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        android:textColor="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
             
+                <TextView 
+        android:id="@+id/antall_penger_fabrikk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/level_fabrikk"/>
+                
+                <TextView 
+        android:id="@+id/timer_fabrikk"
+        android:text="Utvinningstid: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/antall_penger_fabrikk"/>
+                
+                <TextView 
+        android:id="@+id/utvinningstid_fabrikk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:inputType="number"
+        android:layout_below="@id/antall_penger_fabrikk"
+        android:layout_toRightOf="@id/timer_fabrikk"/>
+                
             
         </RelativeLayout>
         

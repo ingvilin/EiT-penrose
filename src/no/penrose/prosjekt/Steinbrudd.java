@@ -60,7 +60,7 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		nextDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME);
 		if(diggCounter > 0) {
 			int sec = (int) SystemClock.elapsedRealtime();
-			toast("sec-startDiggTime[s]: " + (sec-startDiggTime));
+			//toast("sec-startDiggTime[s]: " + (sec-startDiggTime));
 			if(startDiggTime != -1) {
 				if(diggCounter - ((sec - startDiggTime)) <= diggTime) {
 					diggCounter = 0;
