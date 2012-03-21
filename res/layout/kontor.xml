@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/kontor_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout 
+        android:layout_height="75dip"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top">
+            
+            <TextView 
+        		android:id="@+id/antall_kvarts_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentRight="true"
+        		android:layout_alignParentTop="true"/>
+            
+            <TextView 
+        		android:id="@+id/antall_metallurgisk_sillisum_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentRight="true"
+        		android:layout_below="@id/antall_kvarts_kontor"/>
+            
+            <TextView 
+        		android:id="@+id/antall_eg_sillisum_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentRight="true"
+        		android:layout_below="@id/antall_metallurgisk_sillisum_kontor"/>
+            
+            <TextView 
+        		android:id="@+id/antall_rent_sillisum_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentRight="true"
+        		android:layout_below="@id/antall_eg_sillisum_kontor"/>
+            
+            <TextView 
+        		android:id="@+id/level_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentLeft="true"
+        		android:layout_alignParentTop="true"/>
+            
+            <TextView 
+        		android:id="@+id/antall_penger_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentLeft="true"
+        		android:layout_below="@id/level_kontor"/>
+            
+            <TextView 
+        		android:id="@+id/antall_hcl_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentLeft="true"
+        		android:layout_below="@id/antall_penger_kontor"/>
+            
+            <TextView 
+        		android:id="@+id/antall_zirkonium_kontor"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_gravity="right"
+        		android:inputType="number"
+        		android:textColor="#000000"
+        		android:layout_alignParentLeft="true"
+        		android:layout_below="@id/antall_hcl_kontor"/>
+           
+        </RelativeLayout>
+       
+    </LinearLayout> 
+    
+</LinearLayout>

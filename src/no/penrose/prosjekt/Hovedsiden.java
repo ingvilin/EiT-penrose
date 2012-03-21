@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Hovedsiden extends Activity implements OnSharedPreferenceChangeListener{
 	private int antallPenger = 0, antallKvarts = 0;
 	private TextView antallPengerView, antallKvartsView;
-	private Intent steinbrudd, fabrikk, forsknigssenter;
+	private Intent steinbrudd, fabrikk, forsknigssenter, kontor;
 	private String kvartsTittel ="Kvarts: ", pengerTittel="Penger: ";
 	public static final String PENGER ="Penger", KVARTS ="Kvarts";
 	
@@ -22,6 +22,7 @@ public class Hovedsiden extends Activity implements OnSharedPreferenceChangeList
 		steinbrudd = new Intent(getApplicationContext(), Steinbrudd.class);
 		fabrikk = new Intent(getApplicationContext(),Fabrikk.class);
 		forsknigssenter = new Intent(getApplicationContext(), Forskning.class);
+		kontor = new Intent(getApplicationContext(), Kontor.class);
 		
 		antallKvartsView = (TextView) findViewById(R.id.kvartsText);
 	    antallPengerView = (TextView) findViewById(R.id.pengerText);
@@ -52,6 +53,10 @@ public class Hovedsiden extends Activity implements OnSharedPreferenceChangeList
 	
 	public void forskningssenterOnClick(View view){
 		startActivity(forsknigssenter);
+	}
+	
+	public void kontorOnClick(View view) {
+		startActivity(kontor);
 	}
 
 

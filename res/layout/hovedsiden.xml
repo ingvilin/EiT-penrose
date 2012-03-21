@@ -45,7 +45,7 @@
             android:src="@drawable/kvarts" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -53,6 +53,15 @@
             android:layout_marginTop="36dp"
             android:onClick="forskningssenterOnClick"
             android:src="@drawable/forskningsbygget" />
+        
+        <ImageView 
+            android:id="@+id/imageView4"
+            android:layout_width="75dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:onClick="kontorOnClick"
+            android:src="@drawable/kontor" />
 
     </RelativeLayout>
 
