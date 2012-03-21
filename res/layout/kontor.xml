@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout 
-        android:layout_height="75dip"
+        android:layout_height="80dip"
         android:layout_width="fill_parent"
         android:orientation="horizontal">
         
@@ -21,7 +21,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentRight="true"
         		android:layout_alignParentTop="true"/>
             
@@ -31,7 +31,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentRight="true"
         		android:layout_below="@id/antall_kvarts_kontor"/>
             
@@ -41,7 +41,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentRight="true"
         		android:layout_below="@id/antall_metallurgisk_sillisum_kontor"/>
             
@@ -51,7 +51,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentRight="true"
         		android:layout_below="@id/antall_eg_sillisum_kontor"/>
             
@@ -61,7 +61,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentLeft="true"
         		android:layout_alignParentTop="true"/>
             
@@ -71,7 +71,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentLeft="true"
         		android:layout_below="@id/level_kontor"/>
             
@@ -81,7 +81,7 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentLeft="true"
         		android:layout_below="@id/antall_penger_kontor"/>
             
@@ -91,12 +91,25 @@
         		android:layout_height="wrap_content"
         		android:layout_gravity="right"
         		android:inputType="number"
-        		android:textColor="#000000"
+        		android:textColor="#ffffff"
         		android:layout_alignParentLeft="true"
         		android:layout_below="@id/antall_hcl_kontor"/>
            
         </RelativeLayout>
        
     </LinearLayout> 
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+        <ImageView 
+            android:id="@+id/kontoret_kontor"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/kontor_landskap"
+            android:onClick="kontorOnClick"/>
+        
+    </LinearLayout>
     
 </LinearLayout>

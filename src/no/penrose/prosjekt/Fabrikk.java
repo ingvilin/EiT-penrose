@@ -215,10 +215,10 @@ public class Fabrikk extends Activity implements OnClickListener {
 					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
 				else if (ovenOn == 2) {
-					toast("Utvinning av e grad silisum pågår.");
+					toast("Utvinning av elektronisk grad silisum pågår.");
 				}
 				else if(ovenOn == 3) {
-					toast("Utvinning av s grad silisum pågår.");
+					toast("Utvinning av solcellegrad silisum pågår.");
 				}
 			}
 			break;
@@ -248,7 +248,7 @@ public class Fabrikk extends Activity implements OnClickListener {
 			}
 			else if(counter == -1) { 
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Ønsker du å utvinne (Eg Si) til en pris " + (price_oven_2 + environment_cost_level2) + "?").setCancelable(false)
+				builder.setMessage("Ønsker du å utvinne elektronisk grad silisium (Eg Si) til en pris " + (price_oven_2 + environment_cost_level2) + "?").setCancelable(false)
 					.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							if((antallMetallurgiskSilisum >= priceMetallurgiskSilisum) && (antallPenger >= price_oven_2 + environment_cost_level2) && (antallHCl >= priceHCl)) {
@@ -290,10 +290,10 @@ public class Fabrikk extends Activity implements OnClickListener {
 					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
 				else if (ovenOn == 2) {
-					toast("Utvinning av e grad silisum pågår.");
+					toast("Utvinning av elektronisk grad silisum pågår.");
 				}
 				else if(ovenOn == 3) {
-					toast("Utvinning av s grad silisum pågår.");
+					toast("Utvinning av solcellegrad silisum pågår.");
 				}
 			}
 			break;
@@ -323,7 +323,7 @@ public class Fabrikk extends Activity implements OnClickListener {
 			}
 			else if(counter == 1) { 
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Ønsker du å utvinne (Sg Si) til en pris av " + Integer.toString(price_oven_3 + environment_cost_level3) + "?").setCancelable(false)
+				builder.setMessage("Ønsker du å utvinne solcellegrad silisium (Sog Si) til en pris av " + Integer.toString(price_oven_3 + environment_cost_level3) + "?").setCancelable(false)
 					.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							if((antallEgSilisum >= priceEgSilisum) && (antallPenger >= price_oven_3 + environment_cost_level3) && (antallZirkonium >= priceZirkonium)) {
@@ -365,10 +365,10 @@ public class Fabrikk extends Activity implements OnClickListener {
 					toast("Utvinning av metallurgisk grad silisium pågår.");
 				}
 				else if (ovenOn == 2) {
-					toast("Utvinning av e grad silisum pågår.");
+					toast("Utvinning av elektronisk grad grad silisum pågår.");
 				}
 				else if(ovenOn == 3) {
-					toast("Utvinning av s grad silisum pågår.");
+					toast("Utvinning av solcellegrad silisum pågår.");
 				}
 			}
 			break;

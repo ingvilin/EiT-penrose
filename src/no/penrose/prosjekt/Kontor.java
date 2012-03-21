@@ -1,10 +1,13 @@
 package no.penrose.prosjekt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 public class Kontor extends Activity implements OnClickListener {
 	private TextView antallPengerView;	
@@ -16,8 +19,8 @@ public class Kontor extends Activity implements OnClickListener {
 	private TextView antallHClView;
 	private TextView antallZirkoniumView;
 	
-	private int buyPriceHCl = 25;
-	private int buyPriceZirkonium = 25;
+	private int buyPriceHCl = 25000;
+	private int buyPriceZirkonium = 30000;
 	private int maksKvartsGrense = 200;
 	
 	private int level = -1;
@@ -85,8 +88,63 @@ public class Kontor extends Activity implements OnClickListener {
         antallZirkoniumView.setText(zirkoniumTittel + Integer.toString(antallZirkonium));
 	}
 	
-	public void onClick(DialogInterface dialog, int which) {
-		
+	public void onClick(View v) {
+		//switch (v.getId()) {
+		//case R.id.kontoret_kontor:
+		//	toast("hei dette er en test for on click!");
+		//	break;
+		//}
 	}
 	
+	public void kontorOnClick(View v) {
+		final String [] items=new String []{"Kr " + buyPriceHCl + ": Saltsyre (HCl)","Kr " + buyPriceZirkonium + ": Zirkonium (Zr)"};
+		AlertDialog.Builder builder=new AlertDialog.Builder(this);
+		builder.setTitle("Ønsker du å kjøpe noen av de følgende stoffene?");
+
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				if (which == 0) {
+					if (antallPenger >= buyPriceHCl) {
+						antallPenger = antallPenger - buyPriceHCl;
+						antallHCl = antallHCl + 50;
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+						antallHClView.setText(HClTittel + Integer.toString(antallHCl));
+						toast("Du har nå kjøpt 50 kg saltsyre.");
+					}
+					else {
+						toast("Du har ikke råd til saltsyre.");
+					}
+				}
+				else if (which == 1) {
+					if (antallPenger >= buyPriceZirkonium) {
+						antallPenger = antallPenger - buyPriceZirkonium;
+						antallZirkonium = antallZirkonium + 50;
+						toast("Du har nå kjøpt 50 kg saltsyre.");
+						antallZirkoniumView.setText(zirkoniumTittel + Integer.toString(antallZirkonium));
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+					}
+					else {
+						toast("Du jar ikke råd til Zirkonium.");
+					}
+				}
+			}
+		});
+		builder.show();
+	}
+	
+	protected void onStop() {
+		super.onStop();
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_LEVEL, level);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, antallPenger);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl, antallHCl);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON, antallZirkonium);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM, antallMetallurgiskSilisum);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM, antallEgSilisum);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM, antallRentSilisum);
+	}
+	
+	private void toast(String string) {
+		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+	}
 }
