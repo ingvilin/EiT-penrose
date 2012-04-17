@@ -73,28 +73,28 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 		
 		antallMGView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_steinbrudd);
-		antallMg = PreferenceController.loadIntPreferences(getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
-		antallMGView.setText("Mg Si: " + antallMg + Integer.toString(antallMg));
+		antallMg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
+		antallMGView.setText("Mg Si: " + Integer.toString(antallMg));
 		
 		antallEgView = (TextView) findViewById(R.id.antall_eg_sillisum_steinbrudd);
 		antallEg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM);
-		antallEgView.setText("Eg Si: " + antallEg + Integer.toString(antallEg));
+		antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
 		
 		antallRentView = (TextView) findViewById(R.id.antall_rent_sillisum_steinbrudd);
-		antallRent = PreferenceController.loadIntPreferences(getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
-		antallRentView.setText("Sg Si: " + antallRent + Integer.toString(antallRent));
+		antallRent = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
+		antallRentView.setText("Sg Si: " + Integer.toString(antallRent));
 		
 		antallLevelView = (TextView) findViewById(R.id.level_steinbrudd);
-		level = PreferenceController.loadIntPreferences(getApplicationContext(), OPT_LEVEL);
-		antallLevelView.setText("Level: " + level + Integer.toString(level));
+		level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
+		antallLevelView.setText("Level: " + Integer.toString(level));
 		
 		antallHclView = (TextView) findViewById(R.id.antall_hcl_steinbrudd);
-		antallHcl = PreferenceController.loadIntPreferences(getApplicationContext(), OPT_AMOUNT_HCl);
-		antallHclView.setText("HCL: " + antallHcl + Integer.toString(antallHcl));
+		antallHcl = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl);
+		antallHclView.setText("HCL: " + Integer.toString(antallHcl));
 		
 		antallZirkonView = (TextView) findViewById(R.id.antall_zirkonium_steinbrudd);
-		antallZirkon = PreferenceController.loadIntPreferences(getApplicationContext(), OPT_AMOUNT_ZIRKON);
-		antallZirkonView.setText("Zirkon: " + antallZirkon + Integer.toString(antallZirkon));
+		antallZirkon = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
+		antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
 
 		diggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME);		
 		diggCounter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER);

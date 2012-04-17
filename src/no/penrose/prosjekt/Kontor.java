@@ -3,6 +3,7 @@ package no.penrose.prosjekt;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class Kontor extends Activity implements OnClickListener {
 	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.kontor);
 		
@@ -124,7 +125,7 @@ public class Kontor extends Activity implements OnClickListener {
 						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 					}
 					else {
-						toast("Du jar ikke råd til Zirkonium.");
+						toast("Du har ikke råd til Zirkonium.");
 					}
 				}
 			}
@@ -142,6 +143,8 @@ public class Kontor extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM, antallMetallurgiskSilisum);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM, antallEgSilisum);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM, antallRentSilisum);
+		
+		
 	}
 	
 	private void toast(String string) {

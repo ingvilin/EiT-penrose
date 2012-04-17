@@ -115,6 +115,7 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_COUNTER_OVEN, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_ON, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_TIMER_COUNTER, -1);
+		//PreferenceController.saveIntPreferences(this.getApplicationContext(), , value)
 	}
 	
 	private void startGame() {
