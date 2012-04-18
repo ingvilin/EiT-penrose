@@ -84,7 +84,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one , null)); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_three , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
 			break;
@@ -92,7 +92,7 @@ public class Trivia extends Activity{
 			settingsDialog.dismiss();
 			settingsDialog = new Dialog(this);
 			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one  , null)); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_four  , null)); 
 			settingsDialog.show(); 
 			questionTeller++;
 			break;

@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Hva er en legering?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:onClick="correctAnswer"
+        android:text="En blanding av et eller flere metaller" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="En type skismøring" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karabin." />
+        android:text="Stål som er magnetisk" />
  
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:onClick="wrongAnswer"
+        android:text="99,9999999% rent silisium" />
  
 </LinearLayout> 

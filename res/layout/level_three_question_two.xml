@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Gjennom hvilken prosess får elektronene i silisium energi fra sollys (som også er den samme prosessen Einstein fikk nobelprisen sin for i 1921)?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:onClick="correctAnswer"
+        android:text="Den fotoelektriske effekt" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="Den fotokinematiske effekt" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karabin." />
+        android:text="Einstein-effekten" />
  
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:onClick="wrongAnswer"
+        android:text="Et Einstein-sprang" />
  
 </LinearLayout> 

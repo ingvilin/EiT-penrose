@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Hva skjer med de elektriske egenskapene til en halvleder dersom temperaturen økes (innen noen hundre grader ved romtemperatur)?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:text="Resistansen øker litt" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="Ingenting, resistansen holdes i sjakk av ladningseksitasjon" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karabin." />
+        android:text="De ferromagnetiske feltene fluktuerer vilt" />
  
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:text="Ledningsevnen øker" />
  
 </LinearLayout> 

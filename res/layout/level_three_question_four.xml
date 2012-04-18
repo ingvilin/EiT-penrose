@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Hvilken effekt vil en liten forurensing av silisiumkrystaller med arsen ha?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:text="Ledningsbåndet vil heves" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="Valensbåndet vil heves" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karabin." />
+        android:text="Ingenting, de har tross alt lik valens" />
  
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:text="Ledningsbåndet vil senkes" />
  
 </LinearLayout> 

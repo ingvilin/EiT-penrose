@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Hvorfor bruker man legeringer?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:text="For å spare penger" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="For å endre fargen til et metall" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karabin." />
+        android:text="I stedet for universalklister, da det er kornete snø og enkelte partier med isete spor." />
  
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:text="For å gi et metall helt unike egenskaper" />
  
 </LinearLayout> 
