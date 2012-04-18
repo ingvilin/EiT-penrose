@@ -14,26 +14,16 @@ public class Steinbrudd extends Activity implements OnClickListener{
 	private int maksKvartsGrense = 200;
 	private int antallKvarts = 0;
 	private int antallPenger = -1;
-	private int antallEg = -1;
-	private int antallMg = -1;
-	private int antallRent = -1;
 	private int level = -1;
-	private int antallHcl = -1;
-	private int antallZirkon = -1;
 	private int diggTime = 10000; //tid det tar å grave - økes hver gang man graver, -1 betyr at denne tiden er brukt under pågående utgraving er aktiv
 	private int nextDiggTime = -1; //tiden neste utgraving tar, -1 betyr at diggTime er aktiv
 	private int diggCounter = 0; //tiden til gravingen er ferdig
 	private int startDiggTime = -1; //tiden når du gravingen startet, -1 om ingen utgraving pågård
 	private TextView antallKvartsView;
 	private TextView antallPengerView;
-	private TextView antallMGView;
-	private TextView antallEgView;
-	private TextView antallRentView;
 	private TextView antallLevelView;
-	private TextView antallHclView;
-	private TextView antallZirkonView;
 	private TextView utgravingstid;
-	private String kvartsTittel ="Kvarts: ";
+	private String kvartsTittel = "Kvarts: ";
 	private String pengerTittel = "Penger: ";
 	private ImageView kvarts_bilde;
 	public static final String KVARTS ="Kvarts";
@@ -47,11 +37,6 @@ public class Steinbrudd extends Activity implements OnClickListener{
 	private static final String OPT_NEXT_DIGG_TIME = "neste_utgravetid_kvarts";
 	private static final String OPT_MONEY = "antall_kroner";
 	private static final String OPT_LEVEL = "spillerens_level";
-	private static final String OPT_AMOUNT_HCl = "mengde_hcl";
-	private static final String OPT_AMOUNT_ZIRKON = "mengde_zirkon";
-	private static final String OPT_AMOUNT_METALLURGISK_SILISUM = "mengde_mg_silisium";
-	private static final String OPT_AMOUNT_EG_SILISUM = "mengde_eg_silisum";
-	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
 
 	/** Called when the activity is first created. */
 	@Override
@@ -72,29 +57,9 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		antallPenger = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_MONEY);
 		antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 		
-		antallMGView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_steinbrudd);
-		antallMg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
-		antallMGView.setText("Mg Si: " + Integer.toString(antallMg));
-		
-		antallEgView = (TextView) findViewById(R.id.antall_eg_sillisum_steinbrudd);
-		antallEg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM);
-		antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
-		
-		antallRentView = (TextView) findViewById(R.id.antall_rent_sillisum_steinbrudd);
-		antallRent = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
-		antallRentView.setText("Sg Si: " + Integer.toString(antallRent));
-		
 		antallLevelView = (TextView) findViewById(R.id.level_steinbrudd);
 		level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
 		antallLevelView.setText("Level: " + Integer.toString(level));
-		
-		antallHclView = (TextView) findViewById(R.id.antall_hcl_steinbrudd);
-		antallHcl = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl);
-		antallHclView.setText("HCL: " + Integer.toString(antallHcl));
-		
-		antallZirkonView = (TextView) findViewById(R.id.antall_zirkonium_steinbrudd);
-		antallZirkon = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
-		antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
 
 		diggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_TIME);		
 		diggCounter = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DIGG_COUNTER);
@@ -128,8 +93,6 @@ public class Steinbrudd extends Activity implements OnClickListener{
 			diggCounter = 0;
 			utgravingstid.setText("Ingen utgravning pågår.");
 		}
-        
-        //skrive over tid_gaatt_steinbrudd om dette er første gang og ikke fra tidligere 
 	}
 
 		public void onClick(View v) {
@@ -145,11 +108,6 @@ public class Steinbrudd extends Activity implements OnClickListener{
 					kvartsTimer.start();
 					nextDiggTime = diggTime + 10000;
 					diggTime = -1;
-					//invalidate() penger;
-					//----------------------------------------------------------
-					//dette skal ikke være her - skal være når timeren fullfører
-					//antallKvarts = 100;
-					//----------------------------------------------------------
 				}
 				else if(diggCounter > 0) {
 					toast("Utgravingen av kvarts er enda ikke ferdig.");

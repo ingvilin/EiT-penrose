@@ -6,7 +6,7 @@
     android:orientation="vertical" >
     
     <LinearLayout 
-        android:layout_height="100dip"
+        android:layout_height="35dip"
         android:layout_width="fill_parent"
         android:orientation="horizontal">
         
@@ -26,36 +26,6 @@
         		android:layout_alignParentTop="true"/>
             
             <TextView 
-        		android:id="@+id/antall_metallurgisk_sillisum_steinbrudd"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_kvarts_steinbrudd"/>
-            
-            <TextView 
-        		android:id="@+id/antall_eg_sillisum_steinbrudd"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_metallurgisk_sillisum_steinbrudd"/>
-                        
-            <TextView 
-        		android:id="@+id/antall_rent_sillisum_steinbrudd"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_eg_sillisum_steinbrudd"/>
-            
-            <TextView 
         		android:id="@+id/level_steinbrudd"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
@@ -72,28 +42,8 @@
         		android:layout_gravity="right"
         		android:inputType="number"
         		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/level_steinbrudd"/>
-            
-            <TextView 
-        		android:id="@+id/antall_hcl_steinbrudd"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/antall_penger_steinbrudd"/>
-            
-            <TextView 
-        		android:id="@+id/antall_zirkonium_steinbrudd"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/antall_hcl_steinbrudd"/>
+        		android:layout_alignParentRight="true"
+        		android:layout_below="@id/antall_kvarts_steinbrudd"/>
             
             <TextView 
             	android:id="@+id/timer_steinbrudd"
@@ -102,7 +52,7 @@
             	android:layout_height="wrap_content"
             	android:textColor="#ffffff"
             	android:layout_alignParentLeft="true"
-            	android:layout_below="@id/antall_zirkonium_steinbrudd"/>
+            	android:layout_below="@id/level_steinbrudd"/>
             
             <TextView 
             	android:id="@+id/tid_gaatt_steinbrudd"
@@ -110,21 +60,35 @@
             	android:layout_height="wrap_content"
             	android:inputType="number"
             	android:textColor="#ffffff"
-            	android:layout_below="@id/antall_zirkonium_steinbrudd"
+            	android:layout_below="@id/level_steinbrudd"
             	android:layout_toRightOf="@id/timer_steinbrudd"/>
             
         </RelativeLayout>
         
     </LinearLayout>
     
-    <ImageView 
-        android:id="@+id/steinbrudd_image1"
-        android:src="@drawable/steinbrudd"
-        android:layout_width="300dip"
-        android:layout_height="300dip"
-        android:layout_gravity="center"
-        android:onClick="diggKvarts"/>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="top">
+    
+    	<ImageView 
+        	android:id="@+id/steinbrudd_image1"
+        	android:src="@drawable/steinbrudd"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:layout_gravity="center"/>
        
+    	<ImageView 
+        	android:id="@+id/steinbrudd_image2"
+        	android:src="@drawable/gravemaskin"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentBottom="true"
+        	android:layout_alignParentRight="true"
+        	android:onClick="diggKvarts"/>/
+
+	</RelativeLayout>
 
 </LinearLayout>
 
