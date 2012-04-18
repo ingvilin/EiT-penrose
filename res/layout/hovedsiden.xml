@@ -2,144 +2,136 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/hovedsiden"
+    android:background="@drawable/hovedsidenlol"
     android:orientation="vertical" >
-	<LinearLayout 
-        android:layout_height="80dip"
+
+       <LinearLayout
         android:layout_width="fill_parent"
-        android:orientation="horizontal">
+        android:layout_height="35dip"
+        android:orientation="horizontal" >
         
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top">
-            
-            <TextView 
-        		android:id="@+id/antall_kvarts_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_alignParentTop="true"/>
-            
-            <TextView 
-        		android:id="@+id/antall_metallurgisk_sillisum_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_kvarts_hovedsiden"/>
-            
-            <TextView 
-        		android:id="@+id/antall_eg_sillisum_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_metallurgisk_sillisum_hovedsiden"/>
-            
-            <TextView 
-        		android:id="@+id/antall_rent_sillisum_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentRight="true"
-        		android:layout_below="@id/antall_eg_sillisum_hovedsiden"/>
-            
-            <TextView 
-        		android:id="@+id/level_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_alignParentTop="true"/>
-            
-            <TextView 
-        		android:id="@+id/antall_penger_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/level_hovedsiden"/>
-            
-            <TextView 
-        		android:id="@+id/antall_hcl_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/antall_penger_hovedsiden"/>
-            
-            <TextView 
-        		android:id="@+id/antall_zirkonium_hovedsiden"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_gravity="right"
-        		android:inputType="number"
-        		android:textColor="#ffffff"
-        		android:layout_alignParentLeft="true"
-        		android:layout_below="@id/antall_hcl_hovedsiden"/>
-           
-        </RelativeLayout>
-       
-    </LinearLayout> 
+           <TextView
+                android:id="@+id/antall_kvarts_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_metallurgisk_sillisum_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/antall_kvarts_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_eg_sillisum_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/antall_metallurgisk_sillisum_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_rent_sillisum_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/antall_eg_sillisum_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/level_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_penger_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/level_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_hcl_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/antall_penger_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/antall_zirkonium_hovedsiden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/antall_hcl_hovedsiden"
+                android:layout_gravity="right"
+                android:inputType="number"
+                android:textColor="#ffffff" />
+
+    </LinearLayout>
+    
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="236dp"
         android:gravity="top" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="108dp"
-            android:onClick="fabrikkOnClick"
-            android:src="@drawable/fabrikk" />
+            android:layout_marginLeft="20dp"
+            android:onClick="steinbruddOnClick"
+            android:src="@drawable/forskningsbygget" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="kontorOnClick"
+            android:src="@drawable/kontor" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:onClick="steinbruddOnClick"
             android:src="@drawable/kvarts" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/pengerText"
-            android:layout_marginTop="36dp"
-            android:onClick="forskningssenterOnClick"
-            android:src="@drawable/forskningsbygget" />
-        
-        <ImageView 
-            android:id="@+id/imageView4"
-            android:layout_width="75dip"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:onClick="kontorOnClick"
-            android:src="@drawable/kontor" />
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:onClick="fabrikkOnClick"
+            android:src="@drawable/fabrikk" />
 
     </RelativeLayout>
 

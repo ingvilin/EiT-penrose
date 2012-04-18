@@ -57,7 +57,6 @@ public class Trivia extends Activity{
 			}
 		
 		settingsDialog = new Dialog(this); 
-		System.out.println("dette er leveltelleren trololololololo " + levelTeller);
 	}
 
 	public void levelEn(View view){
@@ -106,7 +105,6 @@ public class Trivia extends Activity{
 
 			levelButtonArray.get(levelTeller-1).setClickable(true);
 			for (int i = 0; i < levelTeller; i++) {
-				System.out.println("Er denne sant tralalalala " + levelButtonArray.get(i).isClickable() + "     " + i);
 			}
 			
 		}
