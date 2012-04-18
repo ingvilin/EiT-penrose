@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="For å lage silisium fra kvarts (SiO2) reduseres kvartsen med karbon, men hva vil det si at et stoff reduseres?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Karbon." />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Fluor." />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Karabin." />
- 
+        android:text="At det blir lettere." />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:text="At det tar opp elektroner fra andre stoffer." />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="wrongAnswer"
+        android:text="At det mister fargen." />
+ 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="wrongAnswer"
+        android:text="At stoffet innskrenkes i volum og dermed får større tetthet." />
  
 </LinearLayout> 

@@ -103,11 +103,25 @@ public final class R {
         public static final int forskningssenter=0x7f030003;
         public static final int hovedsiden=0x7f030004;
         public static final int kontor=0x7f030005;
-        public static final int level_one_question_one=0x7f030006;
-        public static final int level_one_question_two=0x7f030007;
-        public static final int main=0x7f030008;
-        public static final int steinbrudd=0x7f030009;
-        public static final int trivia=0x7f03000a;
+        public static final int level_four_question_four=0x7f030006;
+        public static final int level_four_question_one=0x7f030007;
+        public static final int level_four_question_three=0x7f030008;
+        public static final int level_four_question_two=0x7f030009;
+        public static final int level_one_question_four=0x7f03000a;
+        public static final int level_one_question_one=0x7f03000b;
+        public static final int level_one_question_three=0x7f03000c;
+        public static final int level_one_question_two=0x7f03000d;
+        public static final int level_three_question_four=0x7f03000e;
+        public static final int level_three_question_one=0x7f03000f;
+        public static final int level_three_question_three=0x7f030010;
+        public static final int level_three_question_two=0x7f030011;
+        public static final int level_two_question_four=0x7f030012;
+        public static final int level_two_question_one=0x7f030013;
+        public static final int level_two_question_three=0x7f030014;
+        public static final int level_two_question_two=0x7f030015;
+        public static final int main=0x7f030016;
+        public static final int steinbrudd=0x7f030017;
+        public static final int trivia=0x7f030018;
     }
     public static final class string {
         public static final int about_button=0x7f040003;

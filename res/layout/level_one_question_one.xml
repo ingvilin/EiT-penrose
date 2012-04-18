@@ -8,29 +8,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Hva blir neste EiT-kake?"/>
+        android:text="Hva vil det si at silisium er tetravalent?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Sjokoladekake" />
+        android:text="At det er plass til fire silisiumatomer i en valium." />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Banankake" />
+        android:onClick="correctAnswer"
+        android:text="At et silisiumatom kan danne fire kjemiske bindinger til andre atomer." />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Eplekake" />
+        android:text="At silisium vibrerer i fire dimensjoner." />
  
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Bløtekake" />
+        android:text="At silisium atomet er tetrahedralt." />
  
 </LinearLayout> 

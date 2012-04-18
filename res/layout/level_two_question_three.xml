@@ -9,31 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Når vi finner silisium i naturen er det nesten alltid kjemisk bundet til et annet stoff. Hvilket?"/>
+        android:text="Hvor rent må silisiumet være for å kunne brukes i solceller?"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Karbon." />
+        android:onClick="correctAnswer"
+        android:text="99,9999999%, dette kalles ofte for 9 9'ere. " />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="wrongAnswer"
-        android:text="Fluor." />
+        android:text="Det er en fordel om solcellesilisium har en del forurensinger, det bør derfor ikke være renere enn 60%" />
 
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="wrongAnswer"
-        android:text="Karabin." />
- 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="correctAnswer"
-        android:text="Oksygen." />
+        android:text="Solcellesilisium bør være omtrent like rent som metalurgisk silisium. " />
+ 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="wrongAnswer"
+        android:text="Over 80% silisium regnes som rent nok til solceller." />
  
 </LinearLayout> 
