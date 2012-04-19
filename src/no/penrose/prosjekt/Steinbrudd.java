@@ -44,7 +44,7 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.steinbrudd);
 		
-		kvarts_bilde = (ImageView) findViewById(R.id.steinbrudd_image1);
+		kvarts_bilde = (ImageView) findViewById(R.id.steinbrudd_image2);
         kvarts_bilde.setOnClickListener(this);
         
         utgravingstid = (TextView) findViewById(R.id.tid_gaatt_steinbrudd);
@@ -67,7 +67,6 @@ public class Steinbrudd extends Activity implements OnClickListener{
 		nextDiggTime = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_NEXT_DIGG_TIME);
 		if(diggCounter > 0) {
 			int sec = (int) SystemClock.elapsedRealtime();
-			//toast("sec-startDiggTime[s]: " + (sec-startDiggTime));
 			if(startDiggTime != -1) {
 				if(diggCounter - ((sec - startDiggTime)) <= diggTime) {
 					diggCounter = 0;
@@ -97,7 +96,7 @@ public class Steinbrudd extends Activity implements OnClickListener{
 
 		public void onClick(View v) {
 			switch(v.getId()) {
-			case R.id.steinbrudd_image1:
+			case R.id.steinbrudd_image2:
 				if((diggCounter == 0) && (antallKvarts < maksKvartsGrense) && (antallPenger >= prisUtgraving)) {
 					antallPenger = antallPenger - prisUtgraving;
 					antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
