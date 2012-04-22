@@ -43,25 +43,25 @@ public class Hovedsiden extends Activity /*implements OnSharedPreferenceChangeLi
 	    antallPenger = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_MONEY);
 	    antallPengerView.setText("Penger: " + Integer.toString(antallPenger));
 	    
-	    antallHclView = (TextView) findViewById(R.id.antall_hcl_hovedsiden);
-	    antallHcl = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl);
-	    antallHclView.setText("HCL: " + Integer.toString(antallHcl));
+//	    antallHclView = (TextView) findViewById(R.id.antall_hcl_hovedsiden);
+//	    antallHcl = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl);
+//	    antallHclView.setText("HCL: " + Integer.toString(antallHcl));
+//	    
+//	    antallMgView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_hovedsiden);
+//	    antallMg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
+//	    antallMgView.setText("Mg Si: " + Integer.toString(antallMg));
+//	    
+//	    antallEgView = (TextView) findViewById(R.id.antall_eg_sillisum_hovedsiden);
+//	    antallEg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM);
+//	    antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
 	    
-	    antallMgView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_hovedsiden);
-	    antallMg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
-	    antallMgView.setText("Mg Si: " + Integer.toString(antallMg));
+//	    antallSgView = (TextView) findViewById(R.id.antall_rent_sillisum_hovedsiden);
+//	    antallSg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
+//	    antallSgView.setText("Sg Si: " + Integer.toString(antallSg));
 	    
-	    antallEgView = (TextView) findViewById(R.id.antall_eg_sillisum_hovedsiden);
-	    antallEg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM);
-	    antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
-	    
-	    antallSgView = (TextView) findViewById(R.id.antall_rent_sillisum_hovedsiden);
-	    antallSg = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM);
-	    antallSgView.setText("Sg Si: " + Integer.toString(antallSg));
-	    
-	    antallZirkonView = (TextView) findViewById(R.id.antall_zirkonium_hovedsiden);
-	    antallZirkon = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
-	    antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
+//	    antallZirkonView = (TextView) findViewById(R.id.antall_zirkonium_hovedsiden);
+//	    antallZirkon = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
+//	    antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
 	    
 	    levelView = (TextView) findViewById(R.id.level_hovedsiden);
 	    level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
