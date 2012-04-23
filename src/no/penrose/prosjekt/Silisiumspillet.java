@@ -79,8 +79,8 @@ public class Silisiumspillet extends Activity implements OnClickListener {
     	case R.id.new_game_button:
     		AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
     		alertbox.setMessage("Du starter som eier av en silisiumfabrikk i trøndelag med 1 000 000 kr. Ditt mål er å øke" +
-    				" profitten ved å invistere i forskning, oppgradere utstyr, rekrutere briliante NTNU-studenter og utvide" +
-    				" produktsegmentet.");
+    				" profitten ved å investere i forskning, oppgradere utstyr, rekruttere briliante NTNU-studenter og utvide" +
+    				" produktsegmentet. Lykke til!");
     		alertbox.setNeutralButton("Start", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					init();

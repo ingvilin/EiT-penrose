@@ -21,31 +21,38 @@
         <activity
             android:name=".Om"
             android:label="@string/about_title"
-            android:theme="@android:style/Theme.Dialog" >
+            android:theme="@android:style/Theme.Dialog"
+             >
         </activity>
         <activity
             android:name=".Hovedsiden"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Fabrikk"
-            android:label="@string/fabrikk_label" >
+            android:label="@string/fabrikk_label"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Steinbrudd"
-            android:label="@string/steinbrudd_label" >
+            android:label="@string/steinbrudd_label"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Forskning"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Trivia"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
         </activity>
         <activity 
             android:name=".Kontor"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

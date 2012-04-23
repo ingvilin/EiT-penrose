@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Silisiumspillet</string>
-    <string name="main_label">Det store silisiumspillet</string>
+    <string name="main_label">Silisiumdalen</string>
     <string name="new_game_label">Nytt spill</string>
     <string name="about_button">Om spillet</string>
     <string name="continue_label">Fortsett spill</string>
