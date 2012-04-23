@@ -69,11 +69,4 @@
         android:text="Jukseknapp til presentasjon"
         android:onClick="startJuks" />
     
-    <ImageView
-        android:id="@+id/trivia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/trivia"
-        android:onClick="startTrivia" />
-
 </LinearLayout>

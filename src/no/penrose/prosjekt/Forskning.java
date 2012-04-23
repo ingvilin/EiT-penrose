@@ -1,21 +1,16 @@
 package no.penrose.prosjekt;
 
-import java.lang.ref.PhantomReference;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Forskning extends Activity{
-	private ImageView trivia;
 	private Intent triviaIntent;
 	private TextView pengerView, levelView;
 
@@ -55,8 +50,6 @@ public class Forskning extends Activity{
         levelView = (TextView) findViewById(R.id.level_forskning);
         level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
         levelView.setText("Level: " + Integer.toString(level) + "/10");
-		
-		//trivia = (ImageView) findViewById(R.id.trivia);
 	}
 	
 	public void startTrivia(View view){
