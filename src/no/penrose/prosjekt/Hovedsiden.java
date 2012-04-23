@@ -108,11 +108,14 @@ public class Hovedsiden extends Activity /*implements OnSharedPreferenceChangeLi
 	    
 		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts));
 	    antallPengerView.setText("Penger: " + Integer.toString(antallPenger));	    
-	   // antallHclView.setText("HCL: " + Integer.toString(antallHcl));	    
-	   // antallMgView.setText("Mg Si: " + Integer.toString(antallMg));
-	   // antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
-	   // antallSgView.setText("Sg Si: " + Integer.toString(antallSg));
-	   // antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
+
+//	    antallHclView.setText("HCL: " + Integer.toString(antallHcl));	    
+//	    antallMgView.setText("Mg Si: " + Integer.toString(antallMg));
+//	    antallEgView.setText("Eg Si: " + Integer.toString(antallEg));
+//	    antallSgView.setText("Sg Si: " + Integer.toString(antallSg));
+//	    antallZirkonView.setText("Zirkon: " + Integer.toString(antallZirkon));
+
+	
 	    levelView.setText("Level: " + Integer.toString(level));
 	}
 	
