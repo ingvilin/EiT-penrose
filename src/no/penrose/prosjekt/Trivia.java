@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +12,8 @@ import android.widget.Toast;
 
 public class Trivia extends Activity{
 
-	private int kostnadTrivia, levelTeller, questionTeller;
+	private int kostnadTrivia = 2500;
+	int levelTeller, questionTeller, penger;
 	private Button buttonLevel1, buttonLevel2, buttonLevel3, buttonLevel4, buttonLevel5, buttonLevel6, buttonLevel7, buttonLevel8, buttonLevel9, buttonLevel10;
 	ArrayList <Button> levelButtonArray = new ArrayList<Button>();
 	private Dialog settingsDialog;
@@ -26,6 +26,7 @@ public class Trivia extends Activity{
 		setContentView(R.layout.trivia);
 		
 		levelTeller = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
+		penger = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_MONEY);
 		
 		buttonLevel1 = (Button) findViewById(R.id.buttonlevel1);
 		buttonLevel2 = (Button) findViewById(R.id.buttonlevel2);
@@ -60,13 +61,18 @@ public class Trivia extends Activity{
 	}
 
 	public void levelEn(View view){
-		questionTeller = 0;
-		settingsDialog = new Dialog(this);
-		settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
-		settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one 
-		        , null)); 
-		settingsDialog.show(); 
-
+		if (penger >= kostnadTrivia) {
+			penger = penger - kostnadTrivia;
+			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, penger);
+			questionTeller = 0;
+			settingsDialog = new Dialog(this);
+			settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE); 
+			settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.level_one_question_one, null)); 
+			settingsDialog.show();
+		}
+		else {
+			toast("Du har ikke nok penger til å forske.");
+		}
 	}
 	
 	public void correctAnswer(View view){
@@ -102,7 +108,6 @@ public class Trivia extends Activity{
 			levelButtonArray.get(levelTeller-1).setClickable(false);
 			levelTeller++;
 			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_LEVEL, levelTeller);
-
 			levelButtonArray.get(levelTeller-1).setClickable(true);
 			for (int i = 0; i < levelTeller; i++) {
 			}
@@ -111,9 +116,18 @@ public class Trivia extends Activity{
 			
 	}
 	
+	protected void onStop() {
+		super.onStop();
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_MONEY, penger);
+	}
+	
 	public void wrongAnswer(View view){
 		Toast toast = Toast.makeText(getApplicationContext(), "Feil svar", Toast.LENGTH_SHORT);
 		settingsDialog.dismiss();
 		toast.show();
+	}
+	
+	private void toast(String string) {
+		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
 	}
 }
