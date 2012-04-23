@@ -22,6 +22,10 @@ public class Kontor extends Activity implements OnClickListener {
 	
 	private int buyPriceHCl = 25000;
 	private int buyPriceZirkonium = 30000;
+	private int sellPriceKvarts = 10000;
+	private int sellPriceMg = 20000;
+	private int sellPriceEg = 50000;
+	private int sellPriceSg = 75000;
 	private int maksKvartsGrense = 200;
 	
 	private int level = -1;
@@ -97,7 +101,7 @@ public class Kontor extends Activity implements OnClickListener {
 		//}
 	}
 	
-	public void kontorOnClick(View v) {
+	public void kontorOnClick_kjop(View v) {
 		final String [] items=new String []{"Kr " + buyPriceHCl + ": Saltsyre (HCl)","Kr " + buyPriceZirkonium + ": Zirkonium (Zr)"};
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle("Ønsker du å kjøpe noen av de følgende stoffene?");
@@ -133,6 +137,27 @@ public class Kontor extends Activity implements OnClickListener {
 		builder.show();
 	}
 	
+	public void kontorOnClick_selg(View v) {
+		final String [] items=new String []{"Kr " + sellPriceKvarts + ": Kvarts","Kr " + sellPriceMg + ": Metallurgisk grad silisum", "Kr " + sellPriceEg + ": Elektrisk grad silisium", "Kr " + sellPriceSg + " Solcellegrad silisium"};
+		AlertDialog.Builder builder=new AlertDialog.Builder(this);
+		builder.setTitle("Ønsker du å selge noe av de følgende formene silisium?");
+
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				if (which == 0) {
+					antallKvarts = antallKvarts - 1;
+				}
+				else if (which == 1) {
+					antallMetallurgiskSilisum = antallMetallurgiskSilisum - 1;
+				}
+				else if (which == 2) {
+					antallEgSilisum = antallEgSilisum - 1;
+				}
+			}
+		});
+		builder.show();
+	}
+	
 	protected void onStop() {
 		super.onStop();
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_KVARTS, antallKvarts);
@@ -143,8 +168,6 @@ public class Kontor extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM, antallMetallurgiskSilisum);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_EG_SILISUM, antallEgSilisum);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_AMOUNT_RENT_SILSIUM, antallRentSilisum);
-		
-		
 	}
 	
 	private void toast(String string) {

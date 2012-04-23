@@ -3,6 +3,7 @@
     android:id="@+id/kontor_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/kontor_bakgrunn"
     android:orientation="vertical">
 
     <LinearLayout 
@@ -103,12 +104,39 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         
-        <ImageView 
-            android:id="@+id/kontoret_kontor"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/kontor_landskap"
-            android:onClick="kontorOnClick"/>
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top">
+        
+     	   <ImageView 
+        	    android:id="@+id/kontoret_kontor_selg"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:src="@drawable/pc_selg"
+        	    android:layout_marginLeft="118dip"
+        	    android:layout_marginTop="28dip"
+        	    android:onClick="kontorOnClick_selg"/>
+     	   
+     	   <ImageView 
+        	    android:id="@+id/kontoret_kontor_kjop"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:src="@drawable/pc_kjop"
+        	    android:layout_toRightOf="@id/kontoret_kontor_selg"
+        	    android:layout_marginTop="28dip"
+        	    android:onClick="kontorOnClick_kjop"/>
+     	   
+     	   <ImageView 
+        	    android:id="@+id/kontoret_kontor_bokhylle"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:src="@drawable/bokhylle"
+        	    android:layout_toRightOf="@id/kontoret_kontor_kjop"
+        	    android:layout_alignParentRight="true"
+        	    android:onClick="kontorOnClick_bok"/>
+     	   
+     	   </RelativeLayout>
         
     </LinearLayout>
     
