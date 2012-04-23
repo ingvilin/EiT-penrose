@@ -37,6 +37,7 @@ public final class R {
         public static final int smelteovn_level3=0x7f020017;
         public static final int steinbrudd=0x7f020018;
         public static final int trivia=0x7f020019;
+        public static final int utgraving_bakgrunn=0x7f02001a;
     }
     public static final class id {
         public static final int about_button=0x7f05002a;

@@ -3,7 +3,7 @@
     android:id="@+id/steinbrudd_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/steinbrudd"
+    android:background="@drawable/utgraving_bakgrunn"
     android:orientation="vertical" >
     
     <LinearLayout 
@@ -72,15 +72,17 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="top">
-       
-    	<ImageView 
-        	android:id="@+id/steinbrudd_image2"
-        	android:src="@drawable/gravemaskin"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_alignParentBottom="true"
-        	android:layout_alignParentRight="true"
-        	android:onClick="diggKvarts"/>/
+
+    	<ImageView
+    	    android:id="@+id/steinbrudd_image2"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentRight="true"
+    	    android:layout_alignParentTop="true"
+    	    android:onClick="diggKvarts"
+    	    android:src="@drawable/gravemaskin" />
+
+/
 
 	</RelativeLayout>
 
