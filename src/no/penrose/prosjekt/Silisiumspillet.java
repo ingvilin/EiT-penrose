@@ -32,6 +32,13 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 	private static final String OPT_START_TIMER_COUNTER = "tidpunktet_utvinning_startet";
 	private static final String OPT_COUNTER_OVEN = "teller_utvinningstid";
 	private static final String OPT_OVEN_ON = "hvilken_ovn_som_utvinner";
+	private static final String OPT_DONATE_LITTLE = "liten_donasjon";
+	private static final String OPT_DONATE_MEDIUM = "medium_donasjon";
+	private static final String OPT_DONATE_LARGE = "stor_donasjon";
+	private static final String OPT_DONATE_TIME = "tid_til_rapport_kommer";
+	private static final String OPT_REPORT_ONE = "rapport_en";
+	private static final String OPT_REPORT_TWO = "rapport_to";
+	private static final String OPT_REPORT_THREE = "rapport_tre";
 	
 	private static Button newGameButton;
 	private static Button aboutButton;
@@ -115,6 +122,13 @@ public class Silisiumspillet extends Activity implements OnClickListener {
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_COUNTER_OVEN, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_OVEN_ON, -1);
 		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_START_TIMER_COUNTER, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_MEDIUM, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_LITTLE, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_LARGE, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_TIME, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_ONE, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_TWO, -1);
+		PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_THREE, -1);
 		//PreferenceController.saveIntPreferences(this.getApplicationContext(), , value)
 	}
 	

@@ -24,5 +24,8 @@
     <string name="steinbrudd_label">Steinbruddet</string>
     <string name="til_fabrikken">Tilbake til fabrikken</string>
     <string name="kjope_stein">Kjøpe silisium</string>
-
+    
+    <string name="rapport_1_text">Vi har prøvd å belyse forskjellige metaller med lys av ulike bølgelengder for å videre analysere effekten Henrich Hertz oppdaget i 1887. Vi har funnet ut at strømmen ut fra disse metallene øker kun ved økt intensitet av det innkommende lyset, og ikke med minkel bølgelengde (økt energi) selv om en viss energi er nødvendig for å akselerere elektronene over gapet i kretsen. Dette kan tyde på at lys ikke bare har en bølgenatur, men også kan innta en partikkelnatur.</string>
+    <string name="rapport_2_text">Vi har målt strømmen vi kan få ut av å belyse ulike metaller (bl.a. Litium, Natrium og Beryllium) med ulik intensitet og lysenergi (10eV, 20eV, 40eV og 80eV) og kan konkludere med at kun intensiteten øker strømmen, ikke energien. Dette tror vi kan tolkes til at lys også kan opptre som partikkel, ikke bare bølger slik vi trodde før.</string>
+    <string name="rapport_3_text">Etter å ha belyst metaller med lys av varierende energi og intensitet har vi observert at økende intensitet øker utgående strøm, mens økt energi bare hjelper med det mulige gapet kretsen trenger. Dette har vi tolket til at lys kan opptre som partikler, ikke bare bølger.</string>
 </resources>

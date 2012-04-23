@@ -24,6 +24,21 @@
             android:theme="@android:style/Theme.Dialog"
              >
         </activity>
+        <activity 
+            android:name=".Rapport1"
+            android:label="Billig rapport"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity 
+            android:name=".Rapport2"
+            android:label="Passe billig rapport"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity 
+            android:name=".Rapport3"
+            android:label="Dyr rapport"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
         <activity
             android:name=".Hovedsiden"
             android:label="@string/app_name"

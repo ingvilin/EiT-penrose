@@ -1,10 +1,14 @@
 package no.penrose.prosjekt;
 
+import no.penrose.prosjekt.Steinbrudd.MyCounter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +23,8 @@ public class Kontor extends Activity implements OnClickListener {
 	private TextView antallRentSilisumView;
 	private TextView antallHClView;
 	private TextView antallZirkoniumView;
+	
+	private Intent rapport_en_intent, rapport_to_intent, rapport_tre_intent;
 	
 	private int buyPriceHCl = 25000;
 	private int buyPriceZirkonium = 30000;
@@ -36,6 +42,13 @@ public class Kontor extends Activity implements OnClickListener {
 	private int antallPenger = -1;
 	private int antallHCl = -1;
 	private int antallZirkonium = -1;
+	private int rapportTid = -1;
+	private int rapportEn;
+	private int rapportTo;
+	private int rapportTre;
+	private int rapportEnTilgjengelig = -1;
+	private int rapportToTilgjengelig = -1;
+	private int rapportTreTilgjengelig = -1;
 	
 	private String pengerTittel = "Penger: ";
 	private String kvartsTittel = "Kvarts: ";
@@ -54,11 +67,23 @@ public class Kontor extends Activity implements OnClickListener {
 	private static final String OPT_AMOUNT_METALLURGISK_SILISUM = "mengde_mg_silisium";
 	private static final String OPT_AMOUNT_EG_SILISUM = "mengde_eg_silisum";
 	private static final String OPT_AMOUNT_RENT_SILSIUM = "mengde_rent_silisum";
+	private static final String OPT_DONATE_LITTLE = "liten_donasjon";
+	private static final String OPT_DONATE_MEDIUM = "medium_donasjon";
+	private static final String OPT_DONATE_LARGE = "stor_donasjon";
+	private static final String OPT_DONATE_TIME = "tid_til_rapport_kommer";
+	private static final String OPT_REPORT_ONE = "rapport_en";
+	private static final String OPT_REPORT_TWO = "rapport_to";
+	private static final String OPT_REPORT_THREE = "rapport_tre";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.kontor);
+		
+		rapport_en_intent = new Intent(this.getApplicationContext(), Rapport1.class);
+		rapport_to_intent = new Intent(this.getApplicationContext(), Rapport2.class);
+		rapport_tre_intent = new Intent(this.getApplicationContext(), Rapport3.class);
+		
 		
 		antallMetallurgiskSilisumView = (TextView) findViewById(R.id.antall_metallurgisk_sillisum_kontor);
         antallMetallurgiskSilisum = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_METALLURGISK_SILISUM);
@@ -91,6 +116,66 @@ public class Kontor extends Activity implements OnClickListener {
         antallZirkoniumView = (TextView) findViewById(R.id.antall_zirkonium_kontor);
         antallZirkonium = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
         antallZirkoniumView.setText(zirkoniumTittel + Integer.toString(antallZirkonium));
+        
+        rapportTid = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DONATE_TIME);
+        rapportEn = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DONATE_LITTLE);
+        rapportTo = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DONATE_MEDIUM);
+        rapportTre = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_DONATE_LARGE);
+        
+        rapportEnTilgjengelig = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_REPORT_ONE);
+        rapportToTilgjengelig = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_REPORT_TWO);
+        rapportTreTilgjengelig = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_REPORT_THREE);
+        
+        if(rapportTid != -1) {
+        	if(rapportEn != -1) {
+        		int tmp = 120000 - ((int) SystemClock.elapsedRealtime() - rapportTid);
+        		if(tmp > 0) {
+        			final MyCounter rapportTimer = new MyCounter(tmp, 1000);
+        			rapportTimer.start();
+        		}
+        		else {
+        			toast("Du har mottatt en ny forskningsrapport.");
+        			rapportTid = -1;
+        			rapportEn = -1;
+        			rapportEnTilgjengelig = 1;
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_TIME, rapportTid);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_LITTLE, rapportEn);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_ONE, rapportEnTilgjengelig);
+        		}
+        	}
+        	if(rapportEn != -1) {
+        		int tmp = 180000 - ((int) SystemClock.elapsedRealtime() - rapportTid);
+        		if(tmp > 0) {
+        			final MyCounter rapportTimer = new MyCounter(tmp, 1000);
+        			rapportTimer.start();
+        		}
+        		else {
+        			toast("Du har mottatt en ny forskningsrapport.");
+        			rapportTid = -1;
+        			rapportTo = -1;
+        			rapportToTilgjengelig = 1;
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_TIME, rapportTid);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_MEDIUM, rapportTo);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_TWO, rapportToTilgjengelig);
+        		}
+        	}
+        	if(rapportEn != -1) {
+        		int tmp = 240000 - ((int) SystemClock.elapsedRealtime() - rapportTid);
+        		if(tmp > 0) {
+        			final MyCounter rapportTimer = new MyCounter(tmp, 1000);
+        			rapportTimer.start();
+        		}
+        		else {
+        			toast("Du har mottatt en ny forskningsrapport.");
+        			rapportTid = -1;
+        			rapportTre = -1;
+        			rapportTreTilgjengelig = 1;
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_TIME, rapportTid);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_DONATE_LARGE, rapportTre);
+        			PreferenceController.saveIntPreferences(this.getApplicationContext(), OPT_REPORT_THREE, rapportTreTilgjengelig);
+        		}
+        	}
+        }
 	}
 	
 	public void onClick(View v) {
@@ -138,20 +223,91 @@ public class Kontor extends Activity implements OnClickListener {
 	}
 	
 	public void kontorOnClick_selg(View v) {
-		final String [] items=new String []{"Kr " + sellPriceKvarts + ": Kvarts","Kr " + sellPriceMg + ": Metallurgisk grad silisum", "Kr " + sellPriceEg + ": Elektrisk grad silisium", "Kr " + sellPriceSg + " Solcellegrad silisium"};
+		final String [] items=new String []{"10 kg kvarts til kr: " + sellPriceKvarts,"10 kg metallurgisk grad silisum til kr: " + sellPriceMg, "10 kg elektrisk grad silisum til kr: " + sellPriceEg, "10 kg solcellegrad silisium til kr: " + sellPriceSg};
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle("Ønsker du å selge noe av de følgende formene silisium?");
 
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				if (which == 0) {
-					antallKvarts = antallKvarts - 1;
+					if(antallKvarts >= 10) {
+						antallKvarts = antallKvarts - 10;
+						antallPenger = antallPenger + sellPriceKvarts;
+						antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+					}
+					else {
+						toast("Du har ikke nok kvarts.");
+					}
 				}
 				else if (which == 1) {
-					antallMetallurgiskSilisum = antallMetallurgiskSilisum - 1;
+					if(antallMetallurgiskSilisum >= 10) {
+						antallMetallurgiskSilisum = antallMetallurgiskSilisum - 10;
+						antallPenger = antallPenger + sellPriceMg;
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+						antallMetallurgiskSilisumView.setText(metallurgiskSilisumTittel + Integer.toString(antallMetallurgiskSilisum));
+					}
+					else {
+						toast("Du har ikke nok metallurgisk grad silisium.");
+					}
 				}
 				else if (which == 2) {
-					antallEgSilisum = antallEgSilisum - 1;
+					if(antallEgSilisum >= 10) {
+						antallEgSilisum = antallEgSilisum - 10;
+						antallPenger = antallPenger + sellPriceEg;
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+						antallEgSilisumView.setText(egSilisumTittel + Integer.toString(antallEgSilisum));
+					}
+					else {
+						toast("Du har ikke nok elektrisk grad silisium.");
+					}
+				}
+				else if (which == 3) {
+					if(antallRentSilisum >= 10) {
+						antallRentSilisum = antallRentSilisum - 10;
+						antallPenger = antallPenger + sellPriceSg;
+						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+						antallRentSilisumView.setText(rentSilisiumTittel + Integer.toString(antallRentSilisum));
+					}
+					else {
+						toast("Du har ikke nok solcellegrad silisium.");
+					}
+				}
+			}
+		});
+		builder.show();
+	}
+	
+	public void kontorOnClick_bok(View v) {		
+		final String [] items=new String []{"Billig forskningsrapport", "Mindre billig forskningsrapport", "Dyr forskningsrapport"};
+		AlertDialog.Builder builder=new AlertDialog.Builder(this);
+		builder.setTitle("Forskningsrapporter:");
+
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				if (which == 0) {
+					if (rapportEnTilgjengelig == 1) {
+						startActivity(rapport_en_intent);
+					}
+					else {
+						toast("Du har ikke kjøpt/mottatt denne rapporten.");
+					}
+				}
+				else if (which == 1) {
+					if (rapportToTilgjengelig == 1) {
+			    		startActivity(rapport_to_intent);
+					}
+					else {
+						toast("Du har ikke kjøpt/mottatt denne rapporten.");
+					}
+				}
+				else if (which == 2) {
+					if (rapportTreTilgjengelig == 1) {
+			    		startActivity(rapport_tre_intent);
+					}
+					else {
+						toast("Du har ikke kjøpt/mottatt denne rapporten.");
+					}
 				}
 			}
 		});
@@ -172,5 +328,40 @@ public class Kontor extends Activity implements OnClickListener {
 	
 	private void toast(String string) {
 		Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+	}
+	
+	public class MyCounter extends CountDownTimer {
+		public MyCounter(long millisecInFuture, long countDownInterval) {
+			super(millisecInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onFinish() {
+			if(rapportEn != -1) {
+				rapportEn = -1;
+				rapportEnTilgjengelig = 1;
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_DONATE_LITTLE, rapportEn);
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_REPORT_ONE, rapportEnTilgjengelig);
+			}
+			else if (rapportTo != -1) {
+				rapportTo = -1;
+				rapportToTilgjengelig = 1;
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_DONATE_MEDIUM, rapportTo);
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_REPORT_TWO, rapportToTilgjengelig);
+			}
+			else if (rapportTre != -1) {
+				rapportTre = -1;
+				rapportTreTilgjengelig = 1;
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_DONATE_LARGE, rapportTre);
+				PreferenceController.saveIntPreferences(getApplicationContext(), OPT_REPORT_THREE, rapportTreTilgjengelig);
+			}
+			rapportTid = -1;
+			PreferenceController.saveIntPreferences(getApplicationContext(), OPT_DONATE_TIME, rapportTid);
+			toast("Du har mottatt en ny forskningsrapport.");
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+		}
 	}
 }

@@ -6,8 +6,8 @@
  
 	<TextView
         android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="right"
         android:text="Hvor rent er silisiumet som kan brukes til metallegeringer (metalurgisk silisium)?"/>
     <Button
