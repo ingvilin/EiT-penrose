@@ -279,7 +279,7 @@ public class Kontor extends Activity implements OnClickListener {
 	}
 	
 	public void kontorOnClick_bok(View v) {		
-		final String [] items=new String []{"Billig forskningsrapport", "Mindre billig forskningsrapport", "Dyr forskningsrapport"};
+		final String [] items=new String []{"Forskningsrapport fra UiB", "Forskningsrapport fra UiO", "Forskningsrapport fra NTNU"};
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle("Forskningsrapporter:");
 

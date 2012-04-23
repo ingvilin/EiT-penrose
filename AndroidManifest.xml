@@ -26,17 +26,17 @@
         </activity>
         <activity 
             android:name=".Rapport1"
-            android:label="Billig rapport"
+            android:label="Forskningsrapport fra UiB"
             android:theme="@android:style/Theme.Dialog">
         </activity>
         <activity 
             android:name=".Rapport2"
-            android:label="Passe billig rapport"
+            android:label="Forskningsrapport fra UiO"
             android:theme="@android:style/Theme.Dialog">
         </activity>
         <activity 
             android:name=".Rapport3"
-            android:label="Dyr rapport"
+            android:label="Forskningsrapport fra NTNU"
             android:theme="@android:style/Theme.Dialog">
         </activity>
         <activity

@@ -65,9 +65,9 @@ public class Forskning extends Activity{
 	}
 	
 	public void startDonasjon(View view) {
-		final String [] items=new String []{"Liten donasjon kr " + priceSmallDonasjon, "Passe stor donasjon kr " + priceMediumDonasjon, "Stor donasjon kr " + priceStorDonasjon};
+		final String [] items=new String []{"UiB forskningsrapport kr " + priceSmallDonasjon, "UiO forskningsrapport kr " + priceMediumDonasjon, "NTNU forskningsrapport kr " + priceStorDonasjon};
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
-		builder.setTitle("Ønsker du å donere penger til forskning for hjelp til engen forskning?");
+		builder.setTitle("Ønsker du å bestille en god forskningsrapport fra UiB, en litt bedre fra UiO eller en veldig god fra NTNU?");
 
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
