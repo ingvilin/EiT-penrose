@@ -3,7 +3,7 @@
     android:id="@+id/kontor_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/kontor_bakgrunn"
+    android:background="@drawable/bakgrunn_kontor1"
     android:orientation="vertical">
 
     <LinearLayout 
@@ -114,8 +114,8 @@
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
         	    android:src="@drawable/pc_selg"
-        	    android:layout_marginLeft="118dip"
-        	    android:layout_marginTop="28dip"
+        	    android:layout_marginLeft="75dip"
+        	    android:layout_marginTop="12dip"
         	    android:onClick="kontorOnClick_selg"/>
      	   
      	   <ImageView 
@@ -124,7 +124,7 @@
         	    android:layout_height="wrap_content"
         	    android:src="@drawable/pc_kjop"
         	    android:layout_toRightOf="@id/kontoret_kontor_selg"
-        	    android:layout_marginTop="28dip"
+        	    android:layout_marginTop="12dip"
         	    android:onClick="kontorOnClick_kjop"/>
      	   
      	   <ImageView 

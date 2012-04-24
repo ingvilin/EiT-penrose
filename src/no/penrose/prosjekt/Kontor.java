@@ -233,6 +233,7 @@ public class Kontor extends Activity implements OnClickListener {
 						antallPenger = antallPenger + sellPriceKvarts;
 						antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
 						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
+						toast("Du har nå solg 10kg kvarts til kr " + sellPriceKvarts);
 					}
 					else {
 						toast("Du har ikke nok kvarts.");
@@ -244,6 +245,7 @@ public class Kontor extends Activity implements OnClickListener {
 						antallPenger = antallPenger + sellPriceMg;
 						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 						antallMetallurgiskSilisumView.setText(metallurgiskSilisumTittel + Integer.toString(antallMetallurgiskSilisum));
+						toast("Du har nå solgt 10kg metallurgisk grad silisum til kr " + sellPriceMg);
 					}
 					else {
 						toast("Du har ikke nok metallurgisk grad silisium.");
@@ -255,6 +257,7 @@ public class Kontor extends Activity implements OnClickListener {
 						antallPenger = antallPenger + sellPriceEg;
 						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 						antallEgSilisumView.setText(egSilisumTittel + Integer.toString(antallEgSilisum));
+						toast("Du har nå solgt 10kg elektrisk grad silisium til kr " + sellPriceEg);
 					}
 					else {
 						toast("Du har ikke nok elektrisk grad silisium.");
@@ -266,6 +269,7 @@ public class Kontor extends Activity implements OnClickListener {
 						antallPenger = antallPenger + sellPriceSg;
 						antallPengerView.setText(pengerTittel + Integer.toString(antallPenger));
 						antallRentSilisumView.setText(rentSilisiumTittel + Integer.toString(antallRentSilisum));
+						toast("Du har nå solgt 10kg solcellegrad silisium til kr " + sellPriceSg);
 					}
 					else {
 						toast("Du har ikke nok solcellegrad silisium.");
