@@ -137,6 +137,9 @@ public class Steinbrudd extends Activity implements OnClickListener{
 	}
 	
 	public void updateKvartsScore(){
+		if(antallKvarts > maksKvartsGrense)
+			this.antallKvarts = maksKvartsGrense;
+
 		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
 	}
 
@@ -161,6 +164,8 @@ public class Steinbrudd extends Activity implements OnClickListener{
 			diggTime = nextDiggTime;
 			nextDiggTime = -1;	
 			antallKvarts = antallKvarts + 25;
+			if(antallKvarts > maksKvartsGrense)
+				antallKvarts = maksKvartsGrense;
 			antallKvartsView.setText(kvartsTittel + Integer.toString(antallKvarts) + "/" + maksKvartsGrense);
 		}
 
