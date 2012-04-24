@@ -105,7 +105,7 @@ public class Kontor extends Activity implements OnClickListener {
         
         levelView = (TextView) findViewById(R.id.level_kontor);        
         level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
-        levelView.setText(levelTittel + Integer.toString(level) + "/10");
+        levelView.setText(levelTittel + Integer.toString(level));
         
         antallHClView = (TextView) findViewById(R.id.antall_hcl_kontor);
         antallHCl = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_HCl);

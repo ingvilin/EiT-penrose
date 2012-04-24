@@ -121,7 +121,7 @@ public class Fabrikk extends Activity implements OnClickListener {
         
         levelView = (TextView) findViewById(R.id.level_fabrikk);        
         level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
-        levelView.setText(levelTittel + Integer.toString(level) + "/10");
+        levelView.setText(levelTittel + Integer.toString(level));
         
         if(level < 5) {
         	image_level2.setVisibility(View.INVISIBLE);

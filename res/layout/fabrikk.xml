@@ -102,7 +102,8 @@
         android:id="@+id/relativeLayout_fabrikk"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top" >
+        android:layout_gravity="top"
+        android:layout_margin="5dip" >
 
         <ImageView
             android:id="@+id/ovn_level_3_frabrikk"
@@ -116,7 +117,7 @@
         <ImageView
             android:id="@+id/ovn_level_2_frabrikk"
             android:layout_width="150dip"
-            android:layout_height="150dip"
+            android:layout_height="149dip"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/ovn" />

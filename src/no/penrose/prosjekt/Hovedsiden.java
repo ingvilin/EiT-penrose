@@ -34,11 +34,11 @@ public class Hovedsiden extends Activity /*implements OnSharedPreferenceChangeLi
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hovedsiden);
-		
-		antallKvartsView = (TextView) findViewById(R.id.antall_kvarts_hovedsiden);
-		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
-		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts));
-		
+//		
+//		antallKvartsView = (TextView) findViewById(R.id.antall_kvarts_hovedsiden);
+//		antallKvarts = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_KVARTS);
+//		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts));
+//		
 	    antallPengerView = (TextView) findViewById(R.id.antall_penger_hovedsiden);
 	    antallPenger = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_MONEY);
 	    antallPengerView.setText("Penger: " + Integer.toString(antallPenger));
@@ -106,7 +106,7 @@ public class Hovedsiden extends Activity /*implements OnSharedPreferenceChangeLi
 	    antallZirkon = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_AMOUNT_ZIRKON);
 	    level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
 	    
-		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts));
+//		antallKvartsView.setText("Kvarts: " + Integer.toString(antallKvarts));
 	    antallPengerView.setText("Penger: " + Integer.toString(antallPenger));	    
 
 //	    antallHclView.setText("HCL: " + Integer.toString(antallHcl));	    

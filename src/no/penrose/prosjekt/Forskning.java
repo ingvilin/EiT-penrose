@@ -49,7 +49,7 @@ public class Forskning extends Activity{
         
         levelView = (TextView) findViewById(R.id.level_forskning);
         level = PreferenceController.loadIntPreferences(this.getApplicationContext(), OPT_LEVEL);
-        levelView.setText("Level: " + Integer.toString(level) + "/10");
+        levelView.setText("Level: " + Integer.toString(level));
 	}
 	
 	public void startTrivia(View view){
