@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/buttonlevel1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -16,7 +16,7 @@
     <Button
         android:id="@+id/buttonlevel2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/buttonlevel3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/buttonlevel4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -43,7 +43,7 @@
     <Button
         android:id="@+id/buttonlevel5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -52,7 +52,7 @@
     <Button
         android:id="@+id/buttonlevel6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -61,7 +61,7 @@
     <Button
         android:id="@+id/buttonlevel7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -70,7 +70,7 @@
     <Button
         android:id="@+id/buttonlevel8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -79,7 +79,7 @@
     <Button
         android:id="@+id/buttonlevel9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
@@ -88,7 +88,7 @@
     <Button
         android:id="@+id/buttonlevel10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dip"
         android:background="@drawable/level_button"
         android:clickable="false"
         android:onClick="levelEn"
